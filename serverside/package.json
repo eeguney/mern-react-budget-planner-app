@@ -1,0 +1,27 @@
+{
+  "name": "react-budget-planner-app--serverside",
+  "version": "1.0.0",
+  "description": "A powerful and elegance budget planner app written in React.JS",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon start server.js"
+  },
+  "keywords": [
+    "income",
+    "expense"
+  ],
+  "author": "Emre Guney",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.9",
+    "nodemon": "^2.0.15"
+  }
+}

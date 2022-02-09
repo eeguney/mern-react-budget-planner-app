@@ -1,0 +1,17 @@
+@import "../../default.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: $xl) {
+    flex-direction: row;
+  }
+  @media screen and (max-width: $sm) {
+    margin-bottom: 100px;
+  }
+  &.vertical-center {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+}

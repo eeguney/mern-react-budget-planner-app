@@ -1,0 +1,99 @@
+
+.sign-card {
+  width: 400px;
+  height: 400px;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px 1px #0003;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form {
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+  }
+  p {
+    width: 100%;
+    padding-bottom: 22px;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+  }
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 5px 0 5px 0;
+    border-bottom: 3px solid #ebebeb;
+    margin-bottom: 20px;
+    position: relative;
+    height: 60px;
+    &.clicked {
+      input {
+        opacity: 1;
+        display: block;
+      }
+      label {
+        top: -8px !important;
+        left: 0px !important;
+        width: initial !important;
+        height: -moz-fit-content !important;
+        height: fit-content !important;
+        padding: 0 10px !important;
+        background: white;
+      }
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 14px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s;
+      height: 100%;
+      z-index: 2;
+      padding: 20px 16px;
+    }
+    input {
+      height: 100%;
+      padding: 0 15px;
+      border: none;
+      opacity: 0;
+      display: none;
+    }
+  }
+  .finish-text {
+    opacity: 0;
+    a {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      color: green;
+    }
+  }
+  .pageChange {
+    padding: 10px;
+    margin: 15px 0;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    a {
+        color: #666
+    }
+    &:hover {
+        a {
+            color: black;
+        }
+    }
+}
+}

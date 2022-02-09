@@ -1,0 +1,405 @@
+@import "../../default.scss";
+
+.addExpenseItem,
+.addIncomeItem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  label {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .__inner {
+    flex: 1 1;
+    display: flex;
+    border: 1px solid #e7e7e7;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    @media screen and (max-width: $sm) {
+      flex-direction: column;
+    }
+    .expense-description {
+      flex: 1 1;
+      border-radius: 0 10px 10px 0;
+      border: none;
+      padding: 0 25px;
+      font-size: 15px;
+      @media screen and (max-width: $sm) {
+        flex: none;
+        height: 50px;
+        text-align: center;
+        border-radius: 0 0 10px 10px;
+      }
+    }
+    .expense-category-selector {
+      height: 50px;
+      position: relative;
+      width: 170px;
+      @media screen and (max-width: $sm) {
+        width: 100%;
+      }
+      .selectedNsearch {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        border-radius: 10px 0 0 10px;
+        font-weight: 800;
+        color: #000000;
+        cursor: pointer;
+        @media screen and (max-width: $md) {
+          border-bottom: 1px solid #e7e7e7;
+          border-radius: 0;
+        }
+
+        &:hover {
+          background: #f5f5f5;
+        }
+        &:after {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          height: 50%;
+          background: #e7e7e7;
+          margin: auto;
+          content: "";
+          @media screen and (max-width: $sm) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .expense-currency-selector,
+  .income-currency-selector,
+  .expense-person-selector,
+  .income-source-selector {
+    height: 50px;
+    position: relative;
+    width: 170px;
+    @media screen and (max-width: $sm) {
+      width: 100%;
+      flex: none;
+    }
+    .expense-price,
+    .income-earning {
+      flex: 1 1;
+      border-radius: 0 10px 10px 0;
+      border: none;
+      padding: 0 15px;
+      font-size: 15px;
+    }
+    .selectCurrency,
+    .selectPerson,
+    .selectSource {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      border-radius: 10px 0 0 10px;
+      font-weight: 800;
+      color: #000000;
+      cursor: pointer;
+      @media screen and (max-width: $md) {
+        border-bottom: 1px solid #e7e7e7;
+        border-radius: 0;
+      }
+      &:hover {
+        background: #f5f5f5;
+      }
+      &:after {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        height: 50%;
+        background: #e7e7e7;
+        margin: auto;
+        content: "";
+        @media screen and (max-width: $sm) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.category-list,
+.currency-list,
+.person-list,
+.source-list,
+.date-list {
+  width: 100%;
+  max-height: 250px;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  left: -50%;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s;
+  overflow: hidden;
+  transform: scale(0);
+  z-index: 3;
+  p {
+    padding: 10px;
+    font-size: 14px;
+  }
+  /* Chrome, Edge, and Safari */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 50px;
+    border: 0px none #ffffff;
+  }
+  &.active {
+    display: inline-grid;
+    overflow-y: scroll;
+    opacity: 1;
+    transform: scale(1);
+    top: 55px;
+    left: 0;
+    box-shadow: 0 0 9px -6px #000;
+    background: #ffffff87;
+    transition: all 0.3s;
+    width: 24vw;
+    backdrop-filter: blur(13px);
+    @media screen and (max-width: $md) {
+      width: 100%;
+    }
+    @media screen and (min-width: $md) and (max-width: $lg) {
+      width: 50vw;
+    }
+  }
+  input {
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid #e7e7e7;
+    border-radius: 10px;
+    position: sticky;
+    margin-bottom: 10px;
+    top: 0;
+    background: white;
+  }
+  button {
+    border: none;
+    border-bottom: 1px solid #e7e7e7;
+    background: transparent;
+    padding: 14px;
+    text-align: left;
+    cursor: pointer;
+    &:hover {
+      background-color: $theme_purple;
+      color: white;
+      border-bottom: 1px solid transparent;
+      border-radius: 10px;
+    }
+  }
+}
+.date-list {
+  max-height: 200px;
+  margin: auto;
+  right: 0;
+  left: 0;
+  &.active {
+    width: 100% !important;
+    padding: 10px 0;
+
+    button {
+      padding: 9px;
+      font-weight: 600;
+      height: initial;
+      border: none;
+      cursor: pointer;
+      &:hover {
+        background-color: $theme_purple;
+      }
+    }
+  }
+  button:after {
+    display: none;
+  }
+}
+.selectPerson,
+.selectSource {
+  border-radius: 10px !important;
+  border-bottom: 0 !important;
+}
+
+.expense-price,
+.income-earning {
+  flex: 1;
+  border: transparent;
+  padding: 0 25px;
+  border-radius: 10px;
+  font-size: 15px;
+  @media screen and (max-width: $sm) {
+    flex: none;
+    height: 50px;
+    text-align: center;
+  }
+}
+.expense-person-selector,
+.income-source-selector {
+  height: 50px;
+  position: relative;
+  flex: 1;
+  button:after {
+    display: none;
+  }
+}
+.person-list,
+.source-list {
+  margin: auto;
+  right: 0;
+  left: 0;
+  &.active {
+    width: 100%;
+  }
+}
+
+.expense-date-selector {
+  display: flex;
+  flex: 1;
+  div:last-child button {
+    border-bottom: none;
+    &:after {
+      display: none;
+    }
+  }
+  @media screen and (max-width: $sm) {
+    flex-direction: column;
+  }
+  ._day,
+  ._month,
+  ._year {
+    flex: 1;
+    position: relative;
+  }
+  button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    height: 50px;
+    position: relative;
+    font-weight: 700;
+    text-align: center;
+    @media screen and (max-width: $sm) {
+      border-bottom: 1px solid #e7e7e7;
+    }
+    &:hover {
+      background: #f5f5f5;
+      border-radius: 7px;
+      &:after {
+        display: none;
+      }
+    }
+    span {
+      position: absolute;
+      right: 15px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: fit-content;
+      fill: #979797;
+    }
+    &:after {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      height: 50%;
+      background: #e7e7e7;
+      margin: auto;
+      content: "";
+      @media screen and (max-width: $sm) {
+        display: none;
+      }
+    }
+  }
+}
+.note {
+  flex: 1;
+  border: none;
+  height: 100px;
+  resize: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s;
+  &:focus {
+    font-size: 13px;
+  }
+}
+
+.anError {
+  box-shadow: 0px 0px 6px -1px #0000004f, -3px 0px 0px red, 3px 0px 0px red;
+  border-color: white !important;
+}
+
+.addPerson--modal {
+  position: fixed;
+  max-width: 85%;
+  height: fit-content;
+  top: 0;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: white;
+  padding: 100px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px 4px #00000026;
+  animation: 0.4s fadeInAndBigger forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10000;
+  @media screen and (min-width: $md) {
+    max-width: 450px;
+    height: 400px;
+    left: 100px;
+    padding: 45px;
+  }
+  p {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #f80b0b;
+    margin-bottom: 16px;
+  }
+  h3 {
+    font-size: 19px;
+    font-weight: 700;
+    padding: 15px 0;
+    padding-top: 0;
+    text-align: center;
+  }
+  input {
+    height: 60px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #ededed;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 15px;
+  }
+}

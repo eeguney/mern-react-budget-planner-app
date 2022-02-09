@@ -1,0 +1,81 @@
+@import "../../default.scss";
+
+.drawer-nav-button {
+  display: flex;
+  border: none;
+  background: transparent;
+  padding: 10px 15px;
+  flex-direction: column;
+  align-items: center;
+  transition: 0s;
+  @media screen and (min-width: $md) {
+    padding: 10px;
+  }
+  label {
+    font-weight: 700;
+  }
+  &:hover {
+    transition: all 0s;
+    &:nth-child(n + 1) {
+      color: $theme_red;
+      fill: $theme_red;
+    }
+    &:nth-child(n + 2) {
+      color: $theme_green;
+      fill: $theme_green;
+    }
+    &:nth-child(n + 3) {
+      color: $theme_purple;
+      fill: $theme_purple;
+    }
+  }
+}
+
+._addExpense--btn,
+._addIncome--btn {
+  display: flex;
+  border: none;
+  padding: 10px 15px;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  border-radius: 5px;
+  color: white;
+  fill: white;
+  font-weight: 700;
+  cursor: pointer;
+  svg {
+    margin-right: 7px;
+  }
+  &._addExpense--btn {
+    background: $theme_purple;
+  }
+  &._addIncome--btn {
+    background: $theme_green;
+  }
+}
+
+._submit--btn {
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  font-weight: 800;
+  background: $theme_bold-red;
+  font-size: 14px;
+  color: #ffffff;
+  transition: all 0.3s;
+  svg {
+    fill: white !important;
+  }
+}
+
+._sign--btn {
+  border: 1px solid;
+  padding: 15px 30px;
+  color: red;
+  font-weight: 800;
+  background: #e9e9e900;
+  border-radius: 5px;
+  margin: auto;
+  display: block;
+}

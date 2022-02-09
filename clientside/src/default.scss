@@ -1,0 +1,169 @@
+// --> responsive
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+
+// --> colors
+// gray
+$gray100: #ededed;
+$gray200: #e0e0e0;
+$gray300: #cfcfcf;
+$gray400: #b8b8b8;
+$gray500: #a3a3a3;
+// black
+$black100: #4d4d4d;
+$black200: #1f1f1f;
+$black300: #1f1f1f;
+$black400: #0e0e0e;
+$black500: #000000;
+// theme main colors
+$theme_blue: #d5e5f2;
+$theme_bold-blue: #95c2e7;
+$theme_purple: #643df2;
+$theme_green: #1bf2a3;
+$theme_orange: #f29422;
+$theme_red: #f25252;
+$theme_bold-red: #f80a0a;
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.3s;
+  background-color: $theme_blue;
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+    font-family: "Quicksand", sans-serif;
+    box-sizing: border-box;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: blink;
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  * :disabled {
+    opacity: 0.1;
+    cursor: no-drop;
+  }
+
+  // ---
+  .hover-bounce {
+    transition: all 0.4s;
+    &:hover {
+      transition: all 0.4s;
+      transform: translateY(-5px);
+    }
+  }
+}
+
+@keyframes fadeInAndBigger {
+  from {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fadeIn {
+  animation: 0.4s fadeIn;
+}
+
+.fadeOut {
+  animation: 0.4s fadeOut;
+}
+
+.fadeInAndScale {
+  animation: 0.4s fadeInAndScale;
+}
+
+.fadeInSlow {
+  animation: 1.1s fadeInAndScale;
+}
+
+.fadeInDelay {
+  animation: 0.5s fadeIn forwards;
+  animation-delay: 1.5s;
+}
+
+.fadeOutAndScale {
+  animation: 0.3s fadeOutAndScale;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInAndScale {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOutAndScale {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.spinner {
+  animation: 0.7s spinner linear infinite;
+  width: 56px;
+  fill: red;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
