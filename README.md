@@ -1,4 +1,4 @@
-# react-budget-planner-app
+# MERN REACT BUDGET PLANNER APP
 
 A powerful and elegance budget planning app written in React.JS
 
@@ -6,7 +6,10 @@ A powerful and elegance budget planning app written in React.JS
 
 - [React](https://tr.reactjs.org/)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
-- [Redux](https://redux.js.org/) - State Management
+- [Redux](https://redux.js.org/)
+- [MongoDB](https://mongodb.com/)
+- [Express](https://expressjs.com/)
+- [NodeJS](https://nodejs.org/)
 - [Sass](https://sass-lang.com/)
 
 ## License
