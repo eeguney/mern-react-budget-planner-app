@@ -7,6 +7,7 @@ const initialState = {
   persons: [],
   categories: [],
   sources: [],
+  changes: { expense: 0, fund: 0 },
 };
 
 const recordReducer = (state = initialState, action) => {
@@ -37,7 +38,6 @@ const recordReducer = (state = initialState, action) => {
         sources: [...state.sources, { name: action.data, _id: "" }],
       };
     case actionType.NEW_EXPENSE:
-      console.log(action.data)
       return {
         ...state,
         expenses: [
@@ -45,12 +45,20 @@ const recordReducer = (state = initialState, action) => {
           {
             category: action.data.category,
             name: action.data.name,
-            price: action.data.price,
+            price: {
+              currency: action.data.price.currency,
+              price: Number(action.data.price.price)
+            },
             spendingBy: action.data.spendingBy,
             note: action.data.note,
           },
         ],
       };
+      case actionType.BOARD_CHANGE_EXPENSE:
+      return {
+        ...state,
+        changes: { ...state.changes, expense: action.data },
+      };      
     case actionType.NEW_INCOME:
       return {
         ...state,
@@ -58,13 +66,20 @@ const recordReducer = (state = initialState, action) => {
           ...state.funds,
           {
             source: action.data.source,
-            price: action.data.price,
+            price: {
+              currency: action.data.price.currency,
+              price: Number(action.data.price.price)
+            },
             earningBy: action.data.earningBy,
             note: action.data.note,
           },
         ],
       };
-
+      case actionType.BOARD_CHANGE_FUNDS:
+      return {
+        ...state,
+        changes: { ...state.changes, fund: action.data },
+      };
     default:
       return state;
   }

@@ -17,8 +17,8 @@
     justify-content: center;
   }
   @media screen and (min-width: $md) and (max-width: $xl) {
-    padding: 0px 120px!important;
-    padding-right: 20px!important;
+    padding: 0px 120px !important;
+    padding-right: 20px !important;
   }
   .summary-container {
     flex: 1;
@@ -37,7 +37,7 @@
         justify-content: space-between;
         background: repeating-linear-gradient(90deg, #ffffff, #f9f9f9 50%);
         border-radius: 5px;
-        @media screen and (max-width: $lg ) {
+        @media screen and (max-width: $lg) {
           width: 100%;
         }
         ._current-money,
@@ -62,6 +62,22 @@
             font-weight: 500;
             padding: 0 0px 5px 0;
             color: black;
+          }
+          .price-row {
+            display: flex;
+            align-items: center;
+            .increase,
+            .minus {
+              padding: 0;
+              font-size: 16px;
+              font-weight: 500;
+              margin-left: 2px;
+              color: $theme_bold-green;
+              animation: 0.5s linear toLeftwithFade forwards;
+            }
+            .minus {
+              color: $theme_red !important;
+            }
           }
         }
         ._debt {
@@ -107,7 +123,7 @@
             &:hover {
               background-color: #f8f8f8;
             }
-            @media screen and (max-width: $md ) {
+            @media screen and (max-width: $md) {
               grid-template-columns: auto 100px 100px;
             }
             &.expense--li {
@@ -125,7 +141,7 @@
               text-align: center;
               &.item-date {
                 font-size: 14px;
-                @media screen and (max-width: $md ) {
+                @media screen and (max-width: $md) {
                   display: none;
                 }
               }
@@ -134,7 +150,7 @@
               }
               &.item-category {
                 font-size: 14px;
-                @media screen and (max-width: $md ) {
+                @media screen and (max-width: $md) {
                   display: none;
                 }
               }
@@ -172,7 +188,7 @@
         border-radius: 5px;
         .chart-area {
           display: flex;
-          @media screen and (max-width: $lg ) {
+          @media screen and (max-width: $lg) {
             flex-direction: column;
             align-items: center;
           }
@@ -185,7 +201,19 @@
           ._chart {
             width: 200px;
             margin-right: 25px;
-            @media screen and (max-width: $lg ) {
+            svg path:nth-child(1) {
+              stroke: #00cd35;
+            }
+            svg path:nth-child(2) {
+              stroke: $theme_bold-red;
+            }
+            svg path:nth-child(3) {
+              stroke: $theme-green;
+            }
+            svg path:nth-child(4) {
+              stroke: $theme_purple;
+            }
+            @media screen and (max-width: $lg) {
               margin-bottom: 15px;
             }
           }
@@ -194,14 +222,14 @@
             flex: 1;
             flex-direction: column;
             justify-content: center;
-            @media screen and (max-width: $lg ) {
+            @media screen and (max-width: $lg) {
               margin-bottom: 10px;
             }
             * {
               @media screen and (max-width: $md) {
                 margin-bottom: 2px;
               }
-          }
+            }
             .color-info {
               padding: 10px 0;
               display: flex;
@@ -247,7 +275,7 @@
               .this-month {
                 padding-left: 15px !important;
               }
-              
+
               .this-month,
               .daily-avg {
                 padding: 0px 10px;
@@ -264,5 +292,16 @@
         }
       }
     }
+  }
+}
+
+@keyframes toLeftwithFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

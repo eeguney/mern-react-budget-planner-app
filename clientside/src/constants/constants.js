@@ -19,6 +19,8 @@ export const NEW_INCOME = "NEW_INCOME"
 export const NEW_SOURCE = "NEW_SOURCE"
 export const CLEAR_EXPENSE = "CLEAR_EXPENSE"
 export const CLEAR_INCOME = "CLEAR_INCOME"
+export const BOARD_CHANGE_EXPENSE = "BOARD_CHANGE_EXPENSE"
+export const BOARD_CHANGE_FUNDS = "BOARD_CHANGE_FUNDS"
 
 // --> notification types
 export const ERROR = "ERROR"

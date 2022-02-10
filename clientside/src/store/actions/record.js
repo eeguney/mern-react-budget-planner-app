@@ -25,6 +25,16 @@ import jwtDecode from "jwt-decode";
         type: actionType.NEW_EXPENSE,
         data: newExpense
       })
+      dispatch({
+        type: actionType.BOARD_CHANGE_EXPENSE,
+        data: newExpense.price.price
+      })
+      setTimeout(() => {
+        dispatch({
+          type: actionType.BOARD_CHANGE_EXPENSE,
+          data: 0
+        })
+      }, 3500);
     }
    };
 
@@ -33,12 +43,22 @@ import jwtDecode from "jwt-decode";
     const {id} = jwtDecode(token);
     const { data } = await API.addToRecord(id, { funds: newIncome  });
     const { msg } = data
-    console.log(newIncome)
     if(msg) {
       dispatch({
         type: actionType.NEW_INCOME,
         data: newIncome
       })
+      dispatch({
+        type: actionType.BOARD_CHANGE_FUNDS,
+        data: newIncome.price.price
+      })
+      setTimeout(() => {
+        dispatch({
+          type: actionType.BOARD_CHANGE_FUNDS,
+          data: 0
+        })
+      }, 3500);
+
     }
    };
 

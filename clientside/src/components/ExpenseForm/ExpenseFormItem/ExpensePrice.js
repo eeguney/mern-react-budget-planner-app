@@ -35,10 +35,8 @@ export const ExpensePrice = ({ prop }) => {
           type="number"
           className="expense-price"
           placeholder="Type price..."
-          step="0.1"
-          min="0.1"
+          step="1"
           max="9999999999"
-          value={selector.price.price}
           onClick={() => seterror({ ...error, expense: false })}
           onChange={(e) =>
             dispatch(
