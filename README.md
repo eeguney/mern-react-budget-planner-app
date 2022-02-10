@@ -1,6 +1,21 @@
-# MERN REACT BUDGET PLANNER APP
+# MERN React Budget Planner App
 
-A powerful and elegance MERN budget planning app written in React.JS
+A powerful, elegance and MERN Stack, budget planning app written in React.JS.
+
+// This project is still under development.
+
+## Specs;
+
+- Adding expense and income
+- Montly and daily chart
+- Membership system
+- Responsive design
+- And more...
+
+## Contributing;
+
+- If you have problems please leave an issue from [here](https://github.com/eeguney/mern-react-budget-planner-app/issues/)
+- Consider forking the project and submitting new pull requests. I am much likely control [my github accound](https://github.com/eeguney/)
 
 ## Built with;
 
@@ -18,3 +33,5 @@ A powerful and elegance MERN budget planning app written in React.JS
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+// Was designed and coded with love by Emre Güney
