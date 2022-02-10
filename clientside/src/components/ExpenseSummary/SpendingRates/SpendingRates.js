@@ -9,7 +9,6 @@ const SpendingRates = () => {
 
   useEffect(() => {
     var sumByCategories  = [];
-    var color = ["#ccc","#333"];
     expenses.reduce(function (res, value) {
       if (!res[value.category]) {
         res[value.category] = { title: value.category, value: 0, color: "black" };
@@ -18,7 +17,6 @@ const SpendingRates = () => {
       res[value.category].value += value.price.price;
       return res;
     }, {});
-    const { title, value } = sumByCategories
     setSum(sumByCategories);
 
   }, [expenses]);
