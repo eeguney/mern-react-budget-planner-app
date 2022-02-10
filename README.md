@@ -2,7 +2,7 @@
 
 A powerful, elegance and MERN Stack, budget planning app written in React.JS.
 
-// This project is still under development.
+*** This project is still under development.
 
 ## Specs;
 
@@ -34,4 +34,4 @@ A powerful, elegance and MERN Stack, budget planning app written in React.JS.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-// Was designed and coded with love by Emre Güney
+*** Was designed and coded with love by Emre Güney
