@@ -1,13 +1,18 @@
 import * as actionType from "../../constants/constants";
+import moment from "moment";
+import "moment/locale/tr";
+
+moment.locale();
+const date = moment().format("l").split(".");
 
 const initialState = {
   expense: { category: "Uncategorized", name: "" },
-  price: { currency: "$ American Dolar", price: 0 },
+  price: { currency: "Dolar", price: 0 },
   spendingBy: "Not selected",
   date: {
-    day: 1,
-    month: "February",
-    year: "2022",
+    day: date[0],
+    month: date[1],
+    year: date[2],
   },
   note: "",
   toggle: {

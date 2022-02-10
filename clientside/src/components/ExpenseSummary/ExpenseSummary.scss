@@ -7,18 +7,19 @@
   padding: 0 20px;
   animation: 0.4s fadeInAndBigger forwards;
   @media screen and (max-width: $md) {
-    padding: 15px !important;
-    margin-bottom: 0;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
   }
   @media screen and (min-width: $md) {
-    padding: 0 20px;
+    padding: 0 45px;
     padding-left: 0;
     display: flex;
     justify-content: center;
   }
   @media screen and (min-width: $md) and (max-width: $xl) {
-    padding: 0px 120px !important;
-    padding-right: 20px !important;
+    padding: 0px 145px !important;
+    padding-right: 45px !important;
   }
   .summary-container {
     flex: 1;
@@ -35,8 +36,6 @@
         display: flex;
         width: 50%;
         justify-content: space-between;
-        background: repeating-linear-gradient(90deg, #ffffff, #f9f9f9 50%);
-        border-radius: 5px;
         @media screen and (max-width: $lg) {
           width: 100%;
         }
@@ -89,26 +88,35 @@
           }
         }
         ._current-money {
-          flex: 1;
+          flex: 1 1;
           color: #00e900;
+          background: #ffffff;
+          border-radius: 15px;
+          box-shadow: 0 5px 50px rgb(0 0 0 / 15%);
+          margin-right: 20px;
         }
         ._debt {
-          flex: 1;
+          flex: 1 1;
           color: #ff3131;
+          background: #ffffff;
+          border-radius: 15px;
+          box-shadow: 0 5px 50px rgb(0 0 0 / 15%);
+          margin-right: 0;
         }
       }
     }
     .summary-body {
-      margin: 15px 0;
+      margin: 38px 0;
       .recent-transactions {
         background: white;
-        border-radius: 5px;
+        border-radius: 15px;
         padding-bottom: 5px;
+        box-shadow: 0 5px 50px rgb(0 0 0 / 15%);
         h3 {
-          padding: 15px;
+          padding: 20px;
         }
         ._list {
-          margin: 0px 15px;
+          margin: 0px 20px;
           li {
             display: grid;
             grid-template-columns: 100px auto 100px 100px 100px;
@@ -180,12 +188,14 @@
         }
       }
       .spending-rates {
-        padding: 15px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         background: white;
-        margin-bottom: 15px;
-        border-radius: 5px;
+        margin-bottom: 40px;
+        border-radius: 15px;
+        box-shadow: 0 5px 50px rgb(0 0 0 / 15%);
+        position: relative;
         .chart-area {
           display: flex;
           @media screen and (max-width: $lg) {

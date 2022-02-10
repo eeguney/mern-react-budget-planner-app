@@ -9,9 +9,10 @@
   @media screen and (max-width: $md) {
     padding: 15px;
     margin-bottom: 0;
+    overflow-x: clip;
   }
   @media screen and (min-width: $md) {
-    padding: 0px 120px;
+    padding: 0px 145px;
     padding-right: 10px;
     display: flex;
     justify-content: center;
@@ -21,12 +22,14 @@
     display: flex;
     flex-direction: column;
     padding: 10px 0;
-    overflow-x: clip;
-    flex: 1;
+    flex: 1 1;
+    @media screen and (min-width: $md) {
+      clip-path: inset(-35px -35px -35px -40px);
+    }
     .tab-changer-top {
       display: flex;
       flex-direction: row;
-      margin-bottom: 10px;
+      margin-bottom: 25px;
     }
     .tab-changer-bottom {
       display: flex;
@@ -52,46 +55,28 @@
       flex-direction: row;
       width: 200%;
       transition: all 0.4s;
-      overflow-y: clip;
+      justify-content: space-between;
       @media screen and (min-width: $sm) {
         flex-flow: wrap;
+      }
+      @media screen and (max-width: $md) {
+        transform: translateX(0px);
+        width: calc(200% + 50px);
       }
       .tab {
         display: flex;
         background: white;
         flex-direction: column;
-        padding: 15px;
-        border-radius: 5px;
-        flex: 1 1;
+        padding: 15px 25px;
+        border-radius: 15px;
+        width: calc(50% - 35px);
+        box-shadow: 0 5px 50px rgb(0 0 0 / 15%);
         transition: all 0.4s;
-        @media screen and (min-width: $sm) {
-          margin-right: 10px;
+        &.shadow-none {
+          box-shadow: none;
         }
-        &:before {
-          content: "";
-          width: 100%;
-          height: 50%;
-          z-index: 5;
-          position: absolute;
-          left: 0;
-          top: -55%;
-          background-color: rgba(255, 255, 255, 0.829);
-          backdrop-filter: blur(6px);
-          transition: all 0.4s;
-          border-radius: 5px 5px 0 0;
-        }
-        &:after {
-          content: "";
-          width: 100%;
-          height: 50%;
-          z-index: 5;
-          position: absolute;
-          left: 0;
-          bottom: -55%;
-          background-color: rgba(255, 255, 255, 0.829);
-          backdrop-filter: blur(6px);
-          transition: all 0.4s;
-          border-radius: 0 0 5px 5px;
+        @media screen and (max-width: $md) {
+          width: calc(50% - 25px);
         }
         &.moving {
           animation: 0.3s fadeOutExpense forwards;

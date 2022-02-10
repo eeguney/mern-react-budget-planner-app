@@ -32,24 +32,6 @@ const RecentTransactions = () => {
           <div>-$2.2</div>
         </span>
       </li>
-      <li className="fund--li">
-        <span className="item-category">Wage</span>
-        <span className="item-name">Wage from my work</span>
-        <span className="item-spendingBy">John</span>
-        <span className="item-date">3 days</span>
-        <span className="item-price">
-          <div>$620</div>
-        </span>
-      </li>
-      <li className="fund--li">
-        <span className="item-category">Wage</span>
-        <span className="item-name">Wage from my work</span>
-        <span className="item-spendingBy">John</span>
-        <span className="item-date">3 days</span>
-        <span className="item-price">
-          <div>$62520</div>
-        </span>
-      </li>
     </ul>
   </div>
   )

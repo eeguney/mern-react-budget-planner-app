@@ -1,24 +1,24 @@
 .welcome {
-    display: flex;
-    margin: 25px 15px 10px 125px;
-    justify-content: space-between;
-    div {
-        padding: 10px 15px;
-        background: white;
-        border-radius: 5px;
-        font-size: 14px;
-        &.logout {
-            background: #2c2c2c!important;
-            a {
-                color: #ffffff;
-                text-decoration: blink;
-            }
-        }
+  display: flex;
+  margin: 25px 15px 10px 145px;
+  justify-content: space-between;
+  div {
+    padding: 10px 0;
+    border-radius: 5px;
+    font-size: 14px;
+    &.logout {
+      background: #2c2c2c !important;
+      padding: 10px 15px;
+      a {
+        color: #ffffff;
+        text-decoration: blink;
+      }
     }
-    a {
-        font-weight: 800;
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        color: #01cd36;
-    }
+  }
+  a {
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    color: #01cd36;
+  }
 }

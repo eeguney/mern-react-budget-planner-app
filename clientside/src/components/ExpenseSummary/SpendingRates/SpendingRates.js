@@ -12,7 +12,7 @@ const SpendingRates = () => {
     expenses.reduce(function (res, value) {
       if (!res[value.category]) {
         res[value.category] = { title: value.category, value: 0, color: "black" };
-        sumByCategories .push(res[value.category]);
+        sumByCategories.push(res[value.category]);
       }
       res[value.category].value += value.price.price;
       return res;

@@ -10,20 +10,20 @@ const Tabs = ({ children, tabHandler, tab }) => {
           icon={<Icon.Expense size="22" />}
           label="Add Expense"
           onClick={() => {
-            tabHandler(0);
+            tabHandler(1);
           }}
         />
         <Button.AddIncome
           icon={<Icon.Income size="22" />}
           label="Add Funds"
           onClick={() => {
-            tabHandler(-50);
+            tabHandler(2);
           }}
         />
       </div>
       <div
         className="tabs-container"
-        style={{ transform: "translateX(" + tab.translate + "%)" }}
+        style={tab.translate === 1 ? { transform: "translateX(0)" } : { transform: "translateX(calc(-50% - 25px))" }}
       >
         {children}
       </div>

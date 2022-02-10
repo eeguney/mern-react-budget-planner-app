@@ -9,7 +9,7 @@ const ExpenseForm = () => {
   const dispatch = useDispatch();
   const expense = useSelector((state) => state.addExpense);
   const income = useSelector((state) => state.addIncome);
-  const [tab, settab] = useState({ translate: 0, moving: false });
+  const [tab, settab] = useState({ translate: 1, moving: false });
 
   const tabHandler = (order) => {
     settab({ translate: order, moving: true });

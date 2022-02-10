@@ -33,13 +33,13 @@ const AddIncome = ({ tab, dispatch, selector }) => {
     else if (!earningBy) seterror({ ...error, earningBy: true });
     else {
       dispatch(clearForm())
-      dispatch(addIncome({ source, price, earningBy, note }))
+      dispatch(addIncome({ source, price, earningBy, date: new Date(`${date.day}-${date.month}-${date.year}`), note }))
       setSuccess(true)
     }
   };
 
   return (
-    <div className={`tab ${tab.moving ? "moving" : "stand"}`}>
+    <div className={`tab ${tab.moving ? "moving" : "stand"} ${tab.translate === 1 && "shadow-none"}`}>
       <div className="tab-changer-bottom">
         <button type="button" className="_addPerson--btn" onClick={() => dispatch(toggleIncome("addSource"))}>
           Add Source

@@ -30,19 +30,13 @@ export const IncomeEarning = ({ prop }) => {
             }`}
           >
             <input type="text" placeholder="Search currency..." />
-            <button type="button" value="dolar" label="$ American Dolar" onClick={earningHandler}>
+            <button type="button" value="dolar" label="Dolar" onClick={earningHandler}>
               $ American Dolar
             </button>
-            <button type="button" value="euro" label="€ Euro" onClick={earningHandler}>
+            <button type="button" value="euro" label="Euro" onClick={earningHandler}>
               € Euro
             </button>
-            <button type="button" value="sterlin" label="£ Sterlin" onClick={earningHandler}>
-              £ Sterlin
-            </button>
-            <button type="button" value="ruble" label="₽ Russian Ruble" onClick={earningHandler}>
-              ₽ Russian Ruble
-            </button>
-            <button type="button" value="turkish-liras" label="₺ Turkish Liras" onClick={earningHandler}>
+            <button type="button" value="turkish-lira" label="Turkish Lira" onClick={earningHandler}>
               ₺ Turkish Liras
             </button>
           </div>

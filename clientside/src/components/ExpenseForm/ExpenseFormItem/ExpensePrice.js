@@ -24,11 +24,9 @@ export const ExpensePrice = ({ prop }) => {
                 selector.toggle.priceCurrency ? "active" : ""
               }`}>
             <input type="text" placeholder="Search currency..." />
-            <button type="button" value="dolar" label="$ American Dolar" onClick={priceHandler}>$ American Dolar</button>
-            <button type="button" value="euro" label="€ Euro" onClick={priceHandler}>€ Euro</button>
-            <button type="button" value="sterlin" label="£ Sterlin" onClick={priceHandler}>£ Sterlin</button>
-            <button type="button" value="ruble" label="₽ Russian Ruble" onClick={priceHandler}>₽ Russian Ruble</button>
-            <button type="button" value="turkish-liras" label="₺ Turkish Liras" onClick={priceHandler}>₺ Turkish Liras</button>
+            <button type="button" value="dolar" label="Dolar" onClick={priceHandler}>$ American Dolar</button>
+            <button type="button" value="euro" label="Euro" onClick={priceHandler}>€ Euro</button>
+            <button type="button" value="tl" label="Turkish Lira" onClick={priceHandler}>₺ Turkish Lira</button>
           </div>
         </div>
         <input

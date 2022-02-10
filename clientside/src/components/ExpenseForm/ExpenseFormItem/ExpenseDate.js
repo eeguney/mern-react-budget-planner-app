@@ -81,11 +81,11 @@ export const ExpenseDate = ({ prop }) => {
                 selector.toggle.dateMonth ? "active" : ""
               }`}
             >
-              <button type="button" name="month" value="January" onClick={dateHandler}>January</button>
-              <button type="button" name="month" value="February" onClick={dateHandler}>February</button>
-              <button type="button" name="month" value="March" onClick={dateHandler}>March</button>
-              <button type="button" name="month" value="April" onClick={dateHandler}>April</button>
-              <button type="button" name="month" value="May" onClick={dateHandler}>May</button>
+              <button type="button" name="month" value="1" label="January" onClick={dateHandler}>January</button>
+              <button type="button" name="month" value="2" label="February" onClick={dateHandler}>February</button>
+              <button type="button" name="month" value="3" label="March" onClick={dateHandler}>March</button>
+              <button type="button" name="month" value="4" label="April" onClick={dateHandler}>April</button>
+              <button type="button" name="month" value="5" label="May" onClick={dateHandler}>May</button>
             </div>
           </div>
           <div className="_year">

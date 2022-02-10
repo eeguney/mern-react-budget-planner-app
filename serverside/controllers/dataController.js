@@ -31,7 +31,6 @@ export const addToRecord = async (req, res) => {
       return res.status(400).json({ msg: "Please fill in all fields." });
     // check if record exist
     const record = await RecordModel.findOne({ user: userID });
-    console.log(record)
     if (record) {
       await RecordModel.findOneAndUpdate(
         { user: userID },
