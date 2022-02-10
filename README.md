@@ -15,7 +15,7 @@ A powerful, elegance and MERN Stack, budget planning app written in React.JS.
 ## Contributing;
 
 - If you have problems please leave an issue from [here](https://github.com/eeguney/mern-react-budget-planner-app/issues/)
-- Consider forking the project and submitting new pull requests. I am much likely control [my github accound](https://github.com/eeguney/)
+- Consider forking the project and submitting new pull requests. I am much likely control [my github account](https://github.com/eeguney/)
 
 ## Built with;
 
