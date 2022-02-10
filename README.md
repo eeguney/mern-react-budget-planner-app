@@ -7,7 +7,7 @@ A powerful and elegance budget planning app written in React.JS
 - [React](https://tr.reactjs.org/)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [Redux](https://redux.js.org/) - State Management
-- [Sass](https://sass-lang.com/
+- [Sass](https://sass-lang.com/)
 
 ## License
 
