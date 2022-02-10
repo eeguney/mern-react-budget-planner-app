@@ -11,7 +11,7 @@ A powerful, elegance and MERN Stack, budget planning app written in React.JS.
 - Membership system,
 - Responsive design,
 - CSS Animations,
-- And more...
+- And much more...
 
 ## Contributing;
 
