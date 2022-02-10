@@ -1,6 +1,6 @@
 # MERN REACT BUDGET PLANNER APP
 
-A powerful and elegance budget planning app written in React.JS
+A powerful and elegance MERN budget planning app written in React.JS
 
 ## Built with;
 
