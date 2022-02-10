@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const SpendingRates = () => {
   const expenses = useSelector((state) => state.record.expenses);
   const [selected, setSelected] = useState(null);
-  const [sum, setSum] = useState();
+  const [sum, setSum] = useState([]);
 
   useEffect(() => {
     var sumByCategories  = [];
@@ -26,7 +26,7 @@ const SpendingRates = () => {
       <div className="chart-area">
         <div className="_chart">
           <PieChart
-            data={sum}
+            data={sum.length > 0 ? sum : [{ title: "sample", value: 50, color: "black" }, { title: "sample 2", value: 50, color: "black" }, { title: "sample 3", value: 50, color: "black" }, { title: "sample 4", value: 50, color: "black" }]}
             lineWidth={20}
             paddingAngle={18}
             rounded
