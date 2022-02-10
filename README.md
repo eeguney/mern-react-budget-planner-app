@@ -7,10 +7,13 @@ A powerful and elegance MERN budget planning app written in React.JS
 - [React](https://tr.reactjs.org/)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [Redux](https://redux.js.org/)
+- [React Router](https://reactrouter.com/)
 - [MongoDB](https://mongodb.com/)
 - [Express](https://expressjs.com/)
 - [NodeJS](https://nodejs.org/)
+- [JWT](https://jwt.io/)
 - [Sass](https://sass-lang.com/)
+- [React Minimal Pie Chart](https://github.com/toomuchdesign/react-minimal-pie-chart/)
 
 ## License
 
