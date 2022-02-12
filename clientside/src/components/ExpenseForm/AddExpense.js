@@ -34,7 +34,7 @@ const AddExpense = ({ dispatch, selector, tab }) => {
     else if (!spendingBy) seterror({ ...error, spendingBy: true });
     else {
       dispatch(clearForm())
-      dispatch(addExpense({ category: expense.category, name: expense.name, price, spendingBy, date: new Date(`${date.day}-${date.month}-${date.year}`), note }))
+      dispatch(addExpense({ category: expense.category, name: expense.name, price, spendingBy, date: new Date(`${date.month}/${date.day}/${date.year}`), note }))
       setSuccess(true)
     }
   };

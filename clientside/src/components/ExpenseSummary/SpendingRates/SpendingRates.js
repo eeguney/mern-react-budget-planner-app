@@ -8,25 +8,55 @@ const SpendingRates = () => {
   const [sum, setSum] = useState([]);
 
   useEffect(() => {
-    var sumByCategories  = [];
+    var sumByCategories = [];
     expenses.reduce(function (res, value) {
       if (!res[value.category]) {
-        res[value.category] = { title: value.category, value: 0, color: "black" };
+        res[value.category] = {
+          title: value.category,
+          value: 0,
+          montly: 0,
+          daily: 0,
+          color: "black",
+        };
         sumByCategories.push(res[value.category]);
       }
+      // montly calculate
+        // today
+      const today = new Date()
+        // a month before
+      const lastMonth = new Date(new Date().setDate(today.getDate() - 30)) 
+        // last 24 hrs
+      const last24hrs = new Date(today.setHours(today.getHours() - 24)) 
+        // last 1 month
+        // post date
+        const postDate = new Date(value.date).getMonth()
+        
+        console.log(postDate)
+      // console.log(last24hrs+"---LAST 24")
+      // console.log(postDate+"---POST DATE")
+      
       res[value.category].value += value.price.price;
       return res;
     }, {});
     setSum(sumByCategories);
-
   }, [expenses]);
+
   return (
     <div className="spending-rates">
       <h3>Spending rates</h3>
       <div className="chart-area">
         <div className="_chart">
           <PieChart
-            data={sum.length > 0 ? sum : [{ title: "sample", value: 50, color: "black" }, { title: "sample 2", value: 50, color: "black" }, { title: "sample 3", value: 50, color: "black" }, { title: "sample 4", value: 50, color: "black" }]}
+            data={
+              sum.length > 0
+                ? sum
+                : [
+                    { title: "sample", value: 50, color: "black" },
+                    { title: "sample 2", value: 50, color: "black" },
+                    { title: "sample 3", value: 50, color: "black" },
+                    { title: "sample 4", value: 50, color: "black" },
+                  ]
+            }
             lineWidth={20}
             paddingAngle={18}
             rounded

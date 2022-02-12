@@ -1,4 +1,5 @@
 import { addIncomeItem, toggleIncome } from "../../../store/actions/addIncome";
+import { currency } from "../../../utils/lists";
 
 export const IncomeEarning = ({ prop }) => {
   const { label, dispatch, selector, error, seterror } = prop;
@@ -8,7 +9,7 @@ export const IncomeEarning = ({ prop }) => {
     dispatch(
       addIncomeItem("price", {
         ...selector.price,
-        currency: e.target.getAttribute("label"),
+        currency: e.target.value,
       })
     );
   };
@@ -30,15 +31,16 @@ export const IncomeEarning = ({ prop }) => {
             }`}
           >
             <input type="text" placeholder="Search currency..." />
-            <button type="button" value="dolar" label="Dolar" onClick={earningHandler}>
-              $ American Dolar
-            </button>
-            <button type="button" value="euro" label="Euro" onClick={earningHandler}>
-              € Euro
-            </button>
-            <button type="button" value="turkish-lira" label="Turkish Lira" onClick={earningHandler}>
-              ₺ Turkish Liras
-            </button>
+            {currency.map((item) => (
+              <button
+                type="button"
+                value={item.value}
+                label={item.label}
+                onClick={earningHandler}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
         <input

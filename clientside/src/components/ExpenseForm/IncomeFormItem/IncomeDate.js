@@ -1,5 +1,6 @@
 import { addIncomeItem, toggleIncome } from "../../../store/actions/addIncome";
 import Icon from "../../UI/Icons";
+import { day, month, year } from "../../../utils/lists"
 
 export const IncomeDate = ({ prop }) => {
   const { label, dispatch, selector } = prop;
@@ -49,42 +50,11 @@ export const IncomeDate = ({ prop }) => {
             <div
               className={`date-list ${selector.toggle.dateDay ? "active" : ""}`}
             >
-              <button type="button" name="day" value="1">
-                1
-              </button>
-              <button type="button" name="day" value="2" onClick={dateHandler}>
-                2
-              </button>
-              <button type="button" name="day" value="3" onClick={dateHandler}>
-                3
-              </button>
-              <button type="button" name="day" value="4" onClick={dateHandler}>
-                4
-              </button>
-              <button type="button" name="day" value="5" onClick={dateHandler}>
-                5
-              </button>
-              <button type="button" name="day" value="6" onClick={dateHandler}>
-                6
-              </button>
-              <button type="button" name="day" value="7" onClick={dateHandler}>
-                7
-              </button>
-              <button type="button" name="day" value="8" onClick={dateHandler}>
-                8
-              </button>
-              <button type="button" name="day" value="9" onClick={dateHandler}>
-                9
-              </button>
-              <button type="button" name="day" value="10" onClick={dateHandler}>
-                10
-              </button>
-              <button type="button" name="day" value="11" onClick={dateHandler}>
-                11
-              </button>
-              <button type="button" name="day" value="12" onClick={dateHandler}>
-                12
-              </button>
+              {
+                day.map((item) => (
+                  <button type="button" name="day" value={item} onClick={dateHandler}>{item}</button>
+                ))
+              }
             </div>
           </div>
           <div className="_month">
@@ -103,46 +73,11 @@ export const IncomeDate = ({ prop }) => {
                 selector.toggle.dateMonth ? "active" : ""
               }`}
             >
-              <button
-                type="button"
-                name="month"
-                value="January"
-                onClick={dateHandler}
-              >
-                January
-              </button>
-              <button
-                type="button"
-                name="month"
-                value="February"
-                onClick={dateHandler}
-              >
-                February
-              </button>
-              <button
-                type="button"
-                name="month"
-                value="March"
-                onClick={dateHandler}
-              >
-                March
-              </button>
-              <button
-                type="button"
-                name="month"
-                value="April"
-                onClick={dateHandler}
-              >
-                April
-              </button>
-              <button
-                type="button"
-                name="month"
-                value="May"
-                onClick={dateHandler}
-              >
-                May
-              </button>
+              {
+                month.map((item) => (
+                  <button type="button" name="month" value={item.value} label={item.label} onClick={dateHandler}>{item.label}</button>
+                ))
+              }
             </div>
           </div>
           <div className="_year">
@@ -161,46 +96,11 @@ export const IncomeDate = ({ prop }) => {
                 selector.toggle.dateYear ? "active" : ""
               }`}
             >
-              <button
-                type="button"
-                name="year"
-                value="2022"
-                onClick={dateHandler}
-              >
-                2022
-              </button>
-              <button
-                type="button"
-                name="year"
-                value="2021"
-                onClick={dateHandler}
-              >
-                2021
-              </button>
-              <button
-                type="button"
-                name="year"
-                value="2020"
-                onClick={dateHandler}
-              >
-                2020
-              </button>
-              <button
-                type="button"
-                name="year"
-                value="2019"
-                onClick={dateHandler}
-              >
-                2019
-              </button>
-              <button
-                type="button"
-                name="year"
-                value="2018"
-                onClick={dateHandler}
-              >
-                2018
-              </button>
+              {
+                year.map((item) => (
+                  <button type="button" name="year" value={item} onClick={dateHandler}>{item}</button>
+                ))
+              }
             </div>
           </div>
         </div>

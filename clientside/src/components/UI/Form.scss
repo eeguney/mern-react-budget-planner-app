@@ -16,8 +16,7 @@
   .__inner {
     flex: 1 1;
     display: flex;
-    border: 1px solid #e7e7e7;
-    border-radius: 10px;
+    border-bottom: 2px solid #f3f3f3;
     flex-wrap: wrap;
     flex-direction: row;
     @media screen and (max-width: $sm) {
@@ -172,10 +171,10 @@
     overflow-y: scroll;
     opacity: 1;
     transform: scale(1);
-    top: 55px;
+    top: 60px;
     left: 0;
-    box-shadow: 0 0 9px -6px #000;
-    background: #ffffff87;
+    box-shadow: 0 0 2px 1px #0000002c;
+    background: #eedef07a;
     transition: all 0.3s;
     width: 24vw;
     backdrop-filter: blur(13px);
@@ -189,16 +188,16 @@
   input {
     height: 45px;
     padding: 0 15px;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #48484817;
     border-radius: 10px;
     position: sticky;
     margin-bottom: 10px;
     top: 0;
-    background: white;
+    background: #fdedff;
   }
   button {
     border: none;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid #0000000f;
     background: transparent;
     padding: 14px;
     text-align: left;

@@ -1,17 +1,15 @@
 import * as actionType from "../../constants/constants";
 import moment from "moment";
-import "moment/locale/tr";
 
-moment.locale();
-const date = moment().format("l").split(".");
+const date = moment().format("l").split("/");
 
 const initialState = {
   source: "Not selected",
   price: { currency: "Dolar", price: null },
   earningBy: "Not selected",
   date: {
-    day: date[0],
-    month: date[1],
+    day: date[1],
+    month: date[0],
     year: date[2],
   },
   note: "",

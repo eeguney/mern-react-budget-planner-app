@@ -1,4 +1,5 @@
 import { addExpenseItem, toggleExpense } from "../../../store/actions/addExpense";
+import { currency } from "../../../utils/lists";
 
 export const ExpensePrice = ({ prop }) => {
   const { label,  dispatch, selector, error, seterror } = prop;
@@ -8,7 +9,7 @@ export const ExpensePrice = ({ prop }) => {
     dispatch(
       addExpenseItem("price", {
         ...selector.price,
-          currency: e.target.getAttribute("label")
+          currency: e.target.value
       })
     );
   };
@@ -24,9 +25,16 @@ export const ExpensePrice = ({ prop }) => {
                 selector.toggle.priceCurrency ? "active" : ""
               }`}>
             <input type="text" placeholder="Search currency..." />
-            <button type="button" value="dolar" label="Dolar" onClick={priceHandler}>$ American Dolar</button>
-            <button type="button" value="euro" label="Euro" onClick={priceHandler}>€ Euro</button>
-            <button type="button" value="tl" label="Turkish Lira" onClick={priceHandler}>₺ Turkish Lira</button>
+            {currency.map((item) => (
+              <button
+                type="button"
+                value={item.value}
+                label={item.label}
+                onClick={priceHandler}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
         <input

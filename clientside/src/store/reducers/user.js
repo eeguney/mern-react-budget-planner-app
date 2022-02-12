@@ -14,7 +14,7 @@ const userReducer = (state = initialState, action) => {
       sessionStorage.setItem("token", action.data.accessToken);
       window.setTimeout(() => {
         sessionStorage.removeItem("token");
-    }, 3 * 24 * 60 * 60 * 60);
+    }, 3 * 24 * 3600 * 1000);
       return {
         _id: action.data._id,
         fullname: action.data.full,
