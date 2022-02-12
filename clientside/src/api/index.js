@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = sessionStorage.getItem('token');
+const token = localStorage.getItem('token');
 
 const APIwHeader = axios.create({
   baseURL: 'http://localhost:5000/api/',

@@ -7,7 +7,7 @@ import "./Logout.scss";
 const Logout = () => {
   useEffect(() => {
     setTimeout(() => {
-      sessionStorage.removeItem("token");
+      localStorage.removeItem("token");
       window.location.reload();
     }, 1500);
   }, []);

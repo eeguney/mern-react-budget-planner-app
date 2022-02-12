@@ -2,45 +2,10 @@ import { useState, useEffect } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import { useSelector } from "react-redux";
 
-const SpendingRates = () => {
-  const expenses = useSelector((state) => state.record.expenses);
+const SpendingRates = ({ rates }) => {
   const [selected, setSelected] = useState(null);
-  const [sum, setSum] = useState([]);
 
-  useEffect(() => {
-    var sumByCategories = [];
-    expenses.reduce(function (res, value) {
-      if (!res[value.category]) {
-        res[value.category] = {
-          title: value.category,
-          value: 0,
-          montly: 0,
-          daily: 0,
-          color: "black",
-        };
-        sumByCategories.push(res[value.category]);
-      }
-      // montly calculate
-        // today
-      const today = new Date()
-        // a month before
-      const lastMonth = new Date(new Date().setDate(today.getDate() - 30)) 
-        // last 24 hrs
-      const last24hrs = new Date(today.setHours(today.getHours() - 24)) 
-        // last 1 month
-        // post date
-        const postDate = new Date(value.date).getMonth()
-        
-        console.log(postDate)
-      // console.log(last24hrs+"---LAST 24")
-      // console.log(postDate+"---POST DATE")
-      
-      res[value.category].value += value.price.price;
-      return res;
-    }, {});
-    setSum(sumByCategories);
-  }, [expenses]);
-
+  rates.sort((x, y) => y.value - x.value);
   return (
     <div className="spending-rates">
       <h3>Spending rates</h3>
@@ -48,13 +13,37 @@ const SpendingRates = () => {
         <div className="_chart">
           <PieChart
             data={
-              sum.length > 0
-                ? sum
+              rates.length > 0
+                ? rates
                 : [
-                    { title: "sample", value: 50, color: "black" },
-                    { title: "sample 2", value: 50, color: "black" },
-                    { title: "sample 3", value: 50, color: "black" },
-                    { title: "sample 4", value: 50, color: "black" },
+                    {
+                      title: "sample",
+                      value: 50,
+                      color: "black",
+                      weekly: 0,
+                      montly: 0,
+                    },
+                    {
+                      title: "sample 2",
+                      value: 50,
+                      color: "black",
+                      weekly: 0,
+                      montly: 0,
+                    },
+                    {
+                      title: "sample 3",
+                      value: 50,
+                      color: "black",
+                      weekly: 0,
+                      montly: 0,
+                    },
+                    {
+                      title: "sample 4",
+                      value: 50,
+                      color: "black",
+                      weekly: 0,
+                      montly: 0,
+                    },
                   ]
             }
             lineWidth={20}
@@ -98,46 +87,18 @@ const SpendingRates = () => {
           />
         </div>
         <div className="chart-info-area">
-          <div className="color-info">
-            <div className="colorBox" />
-            <label> Tax</label>
-            <div className="this-month">
-              <span>This month:</span> -$512
+          {rates.slice(0,4).map((item) => (
+            <div className="color-info">
+              <div className="colorBox" />
+              <label>{item.title}</label>
+              <div className="this-month">
+                <span>This month:</span> -${item.montly}
+              </div>
+              <div className="daily-avg">
+                <span>This week:</span> -${item.weekly}
+              </div>
             </div>
-            <div className="daily-avg">
-              <span>Daily average:</span> -$45
-            </div>
-          </div>
-          <div className="color-info">
-            <div className="colorBox" />
-            <label> Food</label>
-            <div className="this-month">
-              <span>This month:</span> -$512
-            </div>
-            <div className="daily-avg">
-              <span>Daily average:</span> -$45
-            </div>
-          </div>
-          <div className="color-info">
-            <div className="colorBox" />
-            <label> Car</label>
-            <div className="this-month">
-              <span>This month:</span> -$512
-            </div>
-            <div className="daily-avg">
-              <span>Daily average:</span> -$45
-            </div>
-          </div>
-          <div className="color-info">
-            <div className="colorBox" />
-            <label> Dress</label>
-            <div className="this-month">
-              <span>This month:</span> -$512
-            </div>
-            <div className="daily-avg">
-              <span>Daily average:</span> -$45
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

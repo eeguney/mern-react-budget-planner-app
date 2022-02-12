@@ -18,7 +18,7 @@ const store = createStore(
   )
 );
 
-const token = sessionStorage.getItem("token");
+const token = localStorage.getItem("token");
 if (token !== null) {
   store.dispatch(setLogged());
 

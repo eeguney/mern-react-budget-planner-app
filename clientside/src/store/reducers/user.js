@@ -1,7 +1,7 @@
 import * as actionType from "../../constants/constants";
 
 const initialState = {
-  token: sessionStorage.getItem("token"),
+  token: localStorage.getItem("token"),
   _id: null,
   fullname: null,
   email: null,
@@ -11,9 +11,9 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.SIGNIN:
-      sessionStorage.setItem("token", action.data.accessToken);
+      localStorage.setItem("token", action.data.accessToken);
       window.setTimeout(() => {
-        sessionStorage.removeItem("token");
+        localStorage.removeItem("token");
     }, 3 * 24 * 3600 * 1000);
       return {
         _id: action.data._id,

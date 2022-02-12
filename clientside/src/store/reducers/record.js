@@ -49,6 +49,7 @@ const recordReducer = (state = initialState, action) => {
               currency: action.data.price.currency,
               price: Number(action.data.price.price)
             },
+            date: action.data.date,
             spendingBy: action.data.spendingBy,
             note: action.data.note,
           },
