@@ -27,6 +27,7 @@ A powerful, elegance and MERN Stack, budget planning app written in React.JS
 - [MongoDB](https://mongodb.com/)
 - [Express](https://expressjs.com/)
 - [NodeJS](https://nodejs.org/)
+- [Axios](https://axios-http.com/)
 - [JWT](https://jwt.io/)
 - [Sass](https://sass-lang.com/)
 - [React Minimal Pie Chart](https://github.com/toomuchdesign/react-minimal-pie-chart/)
