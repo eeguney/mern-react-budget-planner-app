@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   addExpenseItem,
@@ -37,18 +37,29 @@ export const ExpenseName = ({ prop }) => {
               selector.toggle.expCategory ? "active" : ""
             }`}
           >
-            <input type="text" placeholder="Search category..." onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
-            {recordState.categories.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((category) => (
-              <button
-                type="button"
-                label={category.name}
-                value={category.name}
-                onClick={categoryHandler}
-              >
-                {category.name}
-              </button>
-            ))}
-            {recordState.categories.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).length < 1 &&  <p>There are no records...</p>}
+            <input
+              type="text"
+              placeholder="Search category..."
+              onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+            />
+            {recordState.categories
+              .filter((item) =>
+                item.name.toLowerCase().match(new RegExp(searchTerm, "g"))
+              )
+              .map((category, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  label={category.name}
+                  value={category.name}
+                  onClick={categoryHandler}
+                >
+                  {category.name}
+                </button>
+              ))}
+            {recordState.categories.filter((item) =>
+              item.name.toLowerCase().match(new RegExp(searchTerm, "g"))
+            ).length < 1 && <p>There are no records...</p>}
           </div>
         </div>
         <input

@@ -9,7 +9,7 @@ export const ExpenseNote = ({ prop }) => {
         <textarea
           className="note"
           placeholder="Leave a note..."
-          value={selector.note}
+          defaultValue={selector.note}
           onChange={(e) =>
             dispatch(addExpenseItem("note", e.currentTarget.value))
           }

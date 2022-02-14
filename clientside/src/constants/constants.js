@@ -21,6 +21,8 @@ export const CLEAR_EXPENSE = "CLEAR_EXPENSE"
 export const CLEAR_INCOME = "CLEAR_INCOME"
 export const BOARD_CHANGE_EXPENSE = "BOARD_CHANGE_EXPENSE"
 export const BOARD_CHANGE_FUNDS = "BOARD_CHANGE_FUNDS"
+export const DELETE_FUND = "DELETE_FUND"
+export const DELETE_EXPENSE = "DELETE_EXPENSE"
 
 // --> notification types
 export const ERROR = "ERROR"

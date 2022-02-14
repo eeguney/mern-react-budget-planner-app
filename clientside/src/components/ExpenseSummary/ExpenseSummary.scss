@@ -112,6 +112,19 @@
         border-radius: 15px;
         padding-bottom: 5px;
         box-shadow: 0 5px 50px rgb(0 0 0 / 15%);
+        label {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          a {
+            margin: 0 40px;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            color: #cdcdcd;
+          }
+        }
         h3 {
           padding: 20px;
         }
@@ -119,7 +132,7 @@
           margin: 0px 20px;
           li {
             display: grid;
-            grid-template-columns: 100px auto 100px 100px 100px;
+            grid-template-columns: 100px auto 100px 140px 100px;
             color: #181818;
             background: white;
             padding: 7px 5px;
@@ -127,6 +140,7 @@
             align-items: center;
             border-bottom: 2px solid #f3f3f3;
             font-weight: 600;
+            cursor: pointer;
             &:last-child {
               border: none;
             }

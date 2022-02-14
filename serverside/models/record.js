@@ -32,26 +32,26 @@ const recordSchema = mongoose.Schema(
     persons: {
       type: [
         {
-          name: String
+          name: String,
         },
       ],
-      unique: true
+      unique: true,
     },
     categories: {
       type: [
         {
-          name: String
+          name: String,
         },
       ],
-      unique: true
+      unique: true,
     },
     sources: {
       type: [
         {
-          name: String
+          name: String,
         },
       ],
-      unique: true
+      unique: true,
     },
   },
   { timestamps: true }

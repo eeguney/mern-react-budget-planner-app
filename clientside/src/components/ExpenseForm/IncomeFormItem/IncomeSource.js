@@ -26,9 +26,18 @@ export const IncomeSource = ({ prop }) => {
           <div
             className={`source-list ${selector.toggle.source ? "active" : ""}`}
           >
-            <input type="text" placeholder="Search person..." onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
-            { recordState.sources.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((source) => (
+            <input
+              type="text"
+              placeholder="Search person..."
+              onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+            />
+            {recordState.sources
+              .filter((item) =>
+                item.name.toLowerCase().match(new RegExp(searchTerm, "g"))
+              )
+              .map((source, index) => (
                 <button
+                  key={index}
                   type="button"
                   label={source.name}
                   onClick={incomeSourceHandler}
@@ -36,7 +45,9 @@ export const IncomeSource = ({ prop }) => {
                   {source.name}
                 </button>
               ))}
-              {recordState.sources.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).length < 1 &&  <p>There are no records...</p>}
+            {recordState.sources.filter((item) =>
+              item.name.toLowerCase().match(new RegExp(searchTerm, "g"))
+            ).length < 1 && <p>There are no records...</p>}
           </div>
         </div>
       </div>

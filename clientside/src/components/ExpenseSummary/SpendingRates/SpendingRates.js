@@ -6,46 +6,45 @@ const SpendingRates = ({ rates }) => {
   const [selected, setSelected] = useState(null);
 
   rates.sort((x, y) => y.value - x.value);
+
+  const sample = [
+    {
+      title: "Sample",
+      value: 50,
+      color: "black",
+      weekly: 0,
+      montly: 0,
+    },
+    {
+      title: "Sample 2",
+      value: 50,
+      color: "black",
+      weekly: 0,
+      montly: 0,
+    },
+    {
+      title: "Sample 3",
+      value: 50,
+      color: "black",
+      weekly: 0,
+      montly: 0,
+    },
+    {
+      title: "Sample 4",
+      value: 50,
+      color: "black",
+      weekly: 0,
+      montly: 0,
+    },
+  ];
+
   return (
     <div className="spending-rates">
       <h3>Spending rates</h3>
       <div className="chart-area">
         <div className="_chart">
           <PieChart
-            data={
-              rates.length > 0
-                ? rates
-                : [
-                    {
-                      title: "sample",
-                      value: 50,
-                      color: "black",
-                      weekly: 0,
-                      montly: 0,
-                    },
-                    {
-                      title: "sample 2",
-                      value: 50,
-                      color: "black",
-                      weekly: 0,
-                      montly: 0,
-                    },
-                    {
-                      title: "sample 3",
-                      value: 50,
-                      color: "black",
-                      weekly: 0,
-                      montly: 0,
-                    },
-                    {
-                      title: "sample 4",
-                      value: 50,
-                      color: "black",
-                      weekly: 0,
-                      montly: 0,
-                    },
-                  ]
-            }
+            data={rates.length > 0 ? rates : sample}
             lineWidth={20}
             paddingAngle={18}
             rounded
@@ -87,8 +86,8 @@ const SpendingRates = ({ rates }) => {
           />
         </div>
         <div className="chart-info-area">
-          {rates.slice(0,4).map((item) => (
-            <div className="color-info">
+          {rates.slice(0, 4).map((item, index) => (
+            <div className="color-info" key={index}>
               <div className="colorBox" />
               <label>{item.title}</label>
               <div className="this-month">
@@ -99,6 +98,7 @@ const SpendingRates = ({ rates }) => {
               </div>
             </div>
           ))}
+          { rates.length < 1 && "There is no records yet..." }
         </div>
       </div>
     </div>

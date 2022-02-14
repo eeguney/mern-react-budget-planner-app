@@ -47,19 +47,20 @@ const recordReducer = (state = initialState, action) => {
             name: action.data.name,
             price: {
               currency: action.data.price.currency,
-              price: Number(action.data.price.price)
+              price: Number(action.data.price.price),
             },
             date: action.data.date,
             spendingBy: action.data.spendingBy,
             note: action.data.note,
+            _id: action.data._id,
           },
         ],
       };
-      case actionType.BOARD_CHANGE_EXPENSE:
+    case actionType.BOARD_CHANGE_EXPENSE:
       return {
         ...state,
         changes: { ...state.changes, expense: action.data },
-      };      
+      };
     case actionType.NEW_INCOME:
       return {
         ...state,
@@ -69,14 +70,28 @@ const recordReducer = (state = initialState, action) => {
             source: action.data.source,
             price: {
               currency: action.data.price.currency,
-              price: Number(action.data.price.price)
+              price: Number(action.data.price.price),
             },
+            date: action.data.date,
             earningBy: action.data.earningBy,
             note: action.data.note,
+            _id: action.data._id,
           },
         ],
       };
-      case actionType.BOARD_CHANGE_FUNDS:
+    case actionType.DELETE_FUND:
+      return {
+        ...state,
+        funds: action.data,
+      };
+
+    case actionType.DELETE_EXPENSE:
+      return {
+        ...state,
+        expenses: action.data,
+      };
+
+    case actionType.BOARD_CHANGE_FUNDS:
       return {
         ...state,
         changes: { ...state.changes, fund: action.data },

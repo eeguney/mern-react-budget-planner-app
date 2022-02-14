@@ -31,8 +31,9 @@ export const IncomeEarning = ({ prop }) => {
             }`}
           >
             <input type="text" placeholder="Search currency..." />
-            {currency.map((item) => (
+            {currency.map((item, index) => (
               <button
+                key={index}
                 type="button"
                 value={item.value}
                 label={item.label}

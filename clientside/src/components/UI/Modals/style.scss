@@ -45,3 +45,17 @@
     font-size: 15px;
   }
 }
+.transactionsModal {
+  position: fixed;
+  width: 650px;
+  height: fit-content;
+  background: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 9999;
+  border-radius: 15px;
+  animation: 0.4s fadeInAndBigger forwards;
+}

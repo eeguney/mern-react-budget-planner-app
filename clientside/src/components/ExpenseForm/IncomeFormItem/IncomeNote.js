@@ -8,7 +8,7 @@ export const IncomeNote = ({ prop }) => {
         <div className="__inner">
           <textarea className="note" placeholder="Leave a note..." onChange={(e) =>
             dispatch(addIncomeItem("note", e.currentTarget.value))
-          }>{selector.note}</textarea>
+          } defaultValue={selector.note}></textarea>
         </div>
       </div>
     );

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { ERROR, SUCCESSFUL } from "../../constants/constants";
 import { clearForm, toggleIncome } from "../../store/actions/addIncome";
-import { addIncome } from "../../store/actions/record";
+import { addIncome, loadData } from "../../store/actions/record";
+import { loadUser } from "../../store/actions/user";
 import Form from "../UI/Form";
 import Notification from "../UI/Notification/Notification";
 import AddSource from "./IncomeFormItem/AddSource";
@@ -28,13 +29,17 @@ const AddIncome = ({ tab, dispatch, selector }) => {
   const submit = (event) => {
     event.preventDefault();
     const { source, price, earningBy, date, note } = selector;
+    console.log(date)
     if (!source) seterror({ ...error, source: true });
     else if (!price.price) seterror({ ...error, price: true });
     else if (!earningBy) seterror({ ...error, earningBy: true });
     else {
       dispatch(clearForm())
-      dispatch(addIncome({ source, price, earningBy, date: new Date(`${date.day}-${date.month}-${date.year}`), note }))
+      dispatch(addIncome({ source, price, earningBy, date: new Date(`${date.month}/${date.day}/${date.year}`), note }))
       setSuccess(true)
+      dispatch(loadUser()).then((user) => {
+        dispatch(loadData());
+      });
     }
   };
 

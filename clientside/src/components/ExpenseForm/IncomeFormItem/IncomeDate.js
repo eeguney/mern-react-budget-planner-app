@@ -51,8 +51,8 @@ export const IncomeDate = ({ prop }) => {
               className={`date-list ${selector.toggle.dateDay ? "active" : ""}`}
             >
               {
-                day.map((item) => (
-                  <button type="button" name="day" value={item} onClick={dateHandler}>{item}</button>
+                day.map((item, index) => (
+                  <button key={index} type="button" name="day" value={item} onClick={dateHandler}>{item}</button>
                 ))
               }
             </div>
@@ -74,8 +74,8 @@ export const IncomeDate = ({ prop }) => {
               }`}
             >
               {
-                month.map((item) => (
-                  <button type="button" name="month" value={item.value} label={item.label} onClick={dateHandler}>{item.label}</button>
+                month.map((item, index) => (
+                  <button key={index} type="button" name="month" value={item.value} label={item.label} onClick={dateHandler}>{item.label}</button>
                 ))
               }
             </div>
@@ -97,8 +97,8 @@ export const IncomeDate = ({ prop }) => {
               }`}
             >
               {
-                year.map((item) => (
-                  <button type="button" name="year" value={item} onClick={dateHandler}>{item}</button>
+                year.map((item, index) => (
+                  <button key={index} type="button" name="year" value={item} onClick={dateHandler}>{item}</button>
                 ))
               }
             </div>

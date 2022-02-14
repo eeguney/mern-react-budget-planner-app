@@ -20,6 +20,8 @@ const API = axios.create({
 export const signUp = (form) => API.post('/user/signup', form);
 export const newRecord = (form) => API.post('/data/newrecord', form);
 export const addToRecord = (id, form) => APIwHeader.put('/data/addtorecord/'+id, form);
+export const deleteFund = (id) => APIwHeader.delete('/data/deletefund/'+id);
+export const deleteExpense = (id) => APIwHeader.delete('/data/deleteexpense/'+id);
 export const signIn = (form) => API.post('/user/signin', form);
 export const fetchAnUser = (id) => APIwHeader.get('/user/'+id, id);
 export const fetchData = (id) => APIwHeader.get('/data/'+id, id);

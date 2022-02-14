@@ -23,7 +23,7 @@ const BudgetBoard = ({ debt, currentMoney, rates }) => {
         { changes.expense > 0 ? <span className="minus">-${changes.expense}</span> 
         : changes.fund > 0 ? <span className="increase">+${changes.fund}</span> : "" }
         </div>
-        <span>Daily change: {daily}$</span>
+        <span>Avg daily loss: {daily}$</span>
       </div>
       <div className="_debt">
         <label>Debt</label>

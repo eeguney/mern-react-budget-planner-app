@@ -4,23 +4,39 @@
   display: flex;
   position: fixed;
   left: 0;
-  background-color: white;
-  border-top: 1px solid #95c2e7;
-  box-shadow: 1px 0 0 #fff;
+  box-shadow: 5px 0 23px rgb(0 0 0 / 15%);
   width: 100%;
   height: 100px;
   bottom: 0;
-  transform: translate(0px, 0px);
+  background-color: white;
+  transform: translateY(0);
   flex-direction: column;
   z-index: 9999;
+  border-radius: 25px 25px 0 0;
+  transition: all 0.2s;
+  &.active {
+    transform: translateY(0);
+    height: 300px;
+    nav {
+      background-color: #fdecff;
+    }
+  }
   @media screen and (min-width: $md) {
     flex-direction: row;
     width: 300px;
     height: 100%;
+    border-radius: 0 25px 25px 0;
     top: 0;
     transform: translateX(-200px);
-    border-top: none;
     box-shadow: 0 5px 23px rgb(0 0 0 / 15%);
+    &.active {
+      transform: translateX(0);
+      height: 100%;
+      nav {
+        background: #fdecff;
+        border-radius: 25px;
+      }
+    }
   }
   .hidden-settings {
     flex: 1;
@@ -35,8 +51,10 @@
     width: 100%;
     flex-direction: row;
     align-items: center;
+    border-radius: 25px 0 25px 0;
     height: 100px;
-
+    background-color: #fff;
+    transition: all 0.4s linear;
     @media screen and (min-width: $md) {
       width: 100px;
       flex-direction: column;

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { ERROR, SUCCESSFUL } from "../../constants/constants";
 import { clearForm, toggleExpense } from "../../store/actions/addExpense";
-import { addExpense } from "../../store/actions/record";
+import { addExpense, loadData } from "../../store/actions/record";
+import { loadUser } from "../../store/actions/user";
 import Form from "../UI/Form";
 import Notification from "../UI/Notification/Notification";
 import AddCategory from "./ExpenseFormItem/AddCategory";
@@ -18,24 +19,37 @@ const AddExpense = ({ dispatch, selector, tab }) => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    if(success) {
+    if (success) {
       setTimeout(() => {
-        setSuccess(false)
+        setSuccess(false);
       }, 5000);
     }
   }, [success]);
-  
 
   const submit = (event) => {
     event.preventDefault();
     const { expense, price, spendingBy, date, note } = selector;
+    console.log(date);
+
     if (!expense.name) seterror({ ...error, expense: true });
     else if (!price.price) seterror({ ...error, price: true });
     else if (!spendingBy) seterror({ ...error, spendingBy: true });
     else {
-      dispatch(clearForm())
-      dispatch(addExpense({ category: expense.category, name: expense.name, price, spendingBy, date: new Date(`${date.month}/${date.day}/${date.year}`), note }))
-      setSuccess(true)
+      dispatch(clearForm());
+      dispatch(
+        addExpense({
+          category: expense.category,
+          name: expense.name,
+          price,
+          spendingBy,
+          date: new Date(`${date.month}/${date.day}/${date.year}`),
+          note,
+        })
+      );
+      setSuccess(true);
+      dispatch(loadUser()).then((user) => {
+        dispatch(loadData());
+      });
     }
   };
 
@@ -49,7 +63,11 @@ const AddExpense = ({ dispatch, selector, tab }) => {
         >
           Add Person
         </button>
-        <button type="button" className="_addCategory--btn" onClick={() => dispatch(toggleExpense("addCategory"))}>
+        <button
+          type="button"
+          className="_addCategory--btn"
+          onClick={() => dispatch(toggleExpense("addCategory"))}
+        >
           Add Category
         </button>
       </div>
@@ -99,17 +117,23 @@ const AddExpense = ({ dispatch, selector, tab }) => {
         </Form.Form>
       </div>
       {/* portals */}
-      {selector.toggle.addPerson && (
-        <AddPerson dispatch={dispatch} />
-      )}
-      {selector.toggle.addCategory && (
-        <AddCategory dispatch={dispatch} />
-      )}
+      {selector.toggle.addPerson && <AddPerson dispatch={dispatch} />}
+      {selector.toggle.addCategory && <AddCategory dispatch={dispatch} />}
       {success && (
-        <Notification type={SUCCESSFUL} label="Successful" text="New expense successfully added..." dispatch={dispatch} />
+        <Notification
+          type={SUCCESSFUL}
+          label="Successful"
+          text="New expense successfully added..."
+          dispatch={dispatch}
+        />
       )}
-      {Object.values(error).some(val => val !== false) && (
-        <Notification type={ERROR} label="An input is empty" text="Please fill all inputs on the form..." dispatch={dispatch} />
+      {Object.values(error).some((val) => val !== false) && (
+        <Notification
+          type={ERROR}
+          label="An input is empty"
+          text="Please fill all inputs on the form..."
+          dispatch={dispatch}
+        />
       )}
     </div>
   );

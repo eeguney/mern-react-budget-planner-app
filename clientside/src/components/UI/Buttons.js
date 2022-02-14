@@ -37,7 +37,7 @@ const Button = {
   Submit: (props) => {
     const { children, className, label, setSuccess, icon, style, ...prop } = props;
     return (
-      <button type="submit" style={style} setSuccess={setSuccess} className={`_submit--btn ${className}`} {...prop}>
+      <button type="submit" style={style} setsuccess={setSuccess} className={`_submit--btn ${className}`} {...prop}>
         {icon}
         {label}
         {children}

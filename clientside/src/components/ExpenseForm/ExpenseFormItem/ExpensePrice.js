@@ -1,15 +1,18 @@
-import { addExpenseItem, toggleExpense } from "../../../store/actions/addExpense";
+import {
+  addExpenseItem,
+  toggleExpense,
+} from "../../../store/actions/addExpense";
 import { currency } from "../../../utils/lists";
 
 export const ExpensePrice = ({ prop }) => {
-  const { label,  dispatch, selector, error, seterror } = prop;
+  const { label, dispatch, selector, error, seterror } = prop;
   // price handler
 
   const priceHandler = (e) => {
     dispatch(
       addExpenseItem("price", {
         ...selector.price,
-          currency: e.target.value
+        currency: e.target.value,
       })
     );
   };
@@ -18,15 +21,22 @@ export const ExpensePrice = ({ prop }) => {
       <label>{label}</label>
       <div className={`__inner ${error && "anError"}`}>
         <div className="expense-currency-selector">
-          <button type="button" className="selectCurrency" onClick={() => dispatch(toggleExpense("priceCurrency"))}>
-          {selector.price.currency}
+          <button
+            type="button"
+            className="selectCurrency"
+            onClick={() => dispatch(toggleExpense("priceCurrency"))}
+          >
+            {selector.price.currency}
           </button>
-          <div className={`currency-list  ${
-                selector.toggle.priceCurrency ? "active" : ""
-              }`}>
+          <div
+            className={`currency-list  ${
+              selector.toggle.priceCurrency ? "active" : ""
+            }`}
+          >
             <input type="text" placeholder="Search currency..." />
-            {currency.map((item) => (
+            {currency.map((item, index) => (
               <button
+                key={index}
                 type="button"
                 value={item.value}
                 label={item.label}

@@ -202,6 +202,9 @@
     padding: 14px;
     text-align: left;
     cursor: pointer;
+    &:last-child {
+      border-bottom: 0;
+    }
     &:hover {
       background-color: $theme_purple;
       color: white;

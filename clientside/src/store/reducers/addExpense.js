@@ -53,9 +53,9 @@ const addExpenseReducer = (state = initialState, action) => {
         price: { currency: "$ American Dolar", price: 0 },
         spendingBy: "Not selected",
         date: {
-          day: 1,
-          month: "February",
-          year: "2022",
+          day: date[1],
+          month: date[0],
+          year: date[2],
         },
         note: "",
       };

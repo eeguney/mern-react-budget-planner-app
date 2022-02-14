@@ -29,8 +29,9 @@ export const EarningBy = ({ prop }) => {
             }`}
           >
             <input type="text" placeholder="Search person..." onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
-            {recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((person) => (
+            {recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((person, index) => (
               <button
+              key={index}
                 type="button"
                 value={person.name}
                 onClick={earningByHandler}

@@ -5,7 +5,7 @@ import BudgetBoard from "./BudgetBoard/BudgetBoard";
 import SpendingRates from "./SpendingRates/SpendingRates";
 import RecentTransactions from "./RecentTransactions/RecentTransactions";
 
-const ExpenseSummary = () => {
+const ExpenseSummary = ({ openModal }) => {
   const selector = useSelector((state) => state);
 
   const [sum, setSum] = useState({
@@ -70,10 +70,10 @@ const ExpenseSummary = () => {
       if (new Date(lastMonthDate) <= new Date(postDate)) {
         const diffTime = Math.abs(new Date(lastMonthDate) - new Date(postDate));
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        const a = (29 - diffDays) * 30;
+        const a = (30 - diffDays) * 30;
         const b = a * value.price.price;
         res[value.category].dailyAvg = parseInt(
-          (res[value.category].dailyAvg + b) / 30
+          (res[value.category].dailyAvg + (b / 30))
         );
       }
       return res;
@@ -113,6 +113,8 @@ const ExpenseSummary = () => {
     });
   }, [selector.record.funds, selector.record.expenses]);
 
+  
+
   return (
     <section className="expenseSummary">
       <div className="summary-container">
@@ -120,7 +122,7 @@ const ExpenseSummary = () => {
         <BudgetBoard debt={sum.debt} currentMoney={sum.currentMoney} rates={rates} />
         <div className="summary-body">
           <SpendingRates rates={rates} />
-          <RecentTransactions />
+          <RecentTransactions openModal={openModal} />
         </div>
       </div>
     </section>

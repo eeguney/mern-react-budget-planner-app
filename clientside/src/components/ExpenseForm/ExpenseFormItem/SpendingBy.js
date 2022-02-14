@@ -29,8 +29,8 @@ export const SpendingBy = ({ prop }) => {
             }`}
           >
             <input type="text" placeholder="Search person..." onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
-            { recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((person) => (
-              <button type="button" label={person.name} value={person.name} onClick={spendingByHandler}>
+            { recordState.persons.filter((item) => item.name.toLowerCase().match(new RegExp(searchTerm, 'g'))).map((person, index) => (
+              <button key={index} type="button" label={person.name} value={person.name} onClick={spendingByHandler}>
               {person.name}
             </button>
             )) }
