@@ -9,6 +9,7 @@ A powerful, elegance and MERN Stack, budget planning app written in React.JS
 - Adding expense and income,
 - Montly and daily chart,
 - Membership system,
+- Live currency converter,
 - Responsive design,
 - CSS Animations,
 - And much more...
