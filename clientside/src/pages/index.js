@@ -3,6 +3,7 @@ import Home from "./Home/Home";
 import Logout from "./Logout/Logout";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignIn/SignUp";
+import Transactions from "./Transactions/Transactions";
 
 const Page = {
   Home: (props) => {
@@ -16,6 +17,9 @@ const Page = {
   },
   Logout: (props) => {
     return <Logout {...props} />
+  },
+  Transactions: (props) => {
+    return <Transactions {...props} />
   }
 };
 

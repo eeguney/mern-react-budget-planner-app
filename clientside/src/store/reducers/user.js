@@ -12,6 +12,8 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.SIGNIN:
       localStorage.setItem("token", action.data.accessToken);
+      localStorage.setItem("firstLogin", true);
+      localStorage.setItem("currency", "Dolar")
       window.setTimeout(() => {
         localStorage.removeItem("token");
     }, 3 * 24 * 3600 * 1000);
