@@ -2,10 +2,26 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  box-shadow: 0 5px 50px rgb(0 0 0 / 41%);
+  border-radius: 15px;
   label {
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    button {
+      border: none;
+      background: #c0cbff;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      padding-right: 3px;
+      fill: #415bd5;
+      border-radius: 99px;
+      align-items: center;
+      justify-content: center;
+  }
   }
   ._top {
     display: flex;

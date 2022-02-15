@@ -114,6 +114,14 @@ body {
   animation: 0.3s fadeOutAndScale;
 }
 
+.fadeInAndTranslate {
+  animation: 0.3s fadeInAndTranslate;
+}
+
+.fadeOutAndTranslate {
+  animation: 0.3s fadeOutAndTranslate;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -129,6 +137,28 @@ body {
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes fadeInAndTranslate {
+  from {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(15px);
+  }
+}
+
+@keyframes fadeOutAndTranslate {
+  from {
+    opacity: 1;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100vh);
   }
 }
 
