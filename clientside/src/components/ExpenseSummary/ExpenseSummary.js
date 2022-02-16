@@ -4,10 +4,11 @@ import "./ExpenseSummary.scss";
 import BudgetBoard from "./BudgetBoard/BudgetBoard";
 import SpendingRates from "./SpendingRates/SpendingRates";
 import RecentTransactions from "./RecentTransactions/RecentTransactions";
+import useCurrencyConverter from "../../utils/useCurrencyConverter";
 
 const ExpenseSummary = ({ openModal }) => {
   const selector = useSelector((state) => state);
-
+  const [result, convertCurrency] = useCurrencyConverter();
   const [sum, setSum] = useState({
     funds: 0,
     expenses: 0,
@@ -73,7 +74,7 @@ const ExpenseSummary = ({ openModal }) => {
         const a = (30 - diffDays) * 30;
         const b = a * value.price.price;
         res[value.category].dailyAvg = parseInt(
-          (res[value.category].dailyAvg + (b / 30))
+          res[value.category].dailyAvg + b / 30
         );
       }
       return res;
@@ -81,45 +82,58 @@ const ExpenseSummary = ({ openModal }) => {
 
     setRates(sumByCategories);
   }, [selector.record.expenses]);
+
+  var expensesByCurrency = [];
+  var fundsByCurrency = [];
   useEffect(() => {
-    // calculation current money and debt
-    // sum all funds
-    let fundPrice = selector.record.funds
-      .map((item) => item.price.price)
-      .reduce((prev, curr) => prev + curr, 0);
-    // sum all expenses
-    let expensePrice = selector.record.expenses
-      .map((item) => item.price.price)
-      .reduce((prev, curr) => prev + curr, 0);
+   
+    const categorizedSum = async () => {
+      
 
-    let debt = 0;
-    let currentMoney = parseInt(fundPrice) - parseInt(expensePrice);
+      // categorized by currency
 
-    setSum({
-      ...sum,
-      funds: fundPrice,
-      expenses: expensePrice,
-    });
+      await selector.record.expenses.reduce(function (res, value) {
+        if (!res[value.price.currency]) {
+          res[value.price.currency] = {
+            currency: value.price.currency,
+            value: 0,
+          };
+          res[value.price.currency].value += value.price.price;
+          expensesByCurrency.push(res[value.price.currency]);
+        }
+        return res;
+      }, {});
 
-    if (currentMoney <= 0) {
-      debt = parseInt(currentMoney);
-      currentMoney = 0;
-    }
+      await selector.record.funds.reduce(function (res, value) {
+        if (!res[value.price.currency]) {
+          res[value.price.currency] = {
+            currency: value.price.currency,
+            value: 0,
+          };
+          res[value.price.currency].value += value.price.price;
+          fundsByCurrency.push(res[value.price.currency]);
+        }
+        return res;
+      }, {});
 
-    setSum({
-      ...sum,
-      currentMoney: currentMoney,
-      debt: debt,
-    });
-  }, [selector.record.funds, selector.record.expenses]);
+      // exchange
 
-  
+    
+      const allExpenses = expensesByCurrency.concat(fundsByCurrency);
+    };
 
+    categorizedSum();
+  }, [expensesByCurrency,fundsByCurrency]);
+console.log(sum)
   return (
     <section className="expenseSummary">
       <div className="summary-container">
         <h2>Summary</h2>
-        <BudgetBoard debt={sum.debt} currentMoney={sum.currentMoney} rates={rates} />
+        <BudgetBoard
+          debt={sum.debt}
+          currentMoney={sum.currentMoney}
+          rates={rates}
+        />
         <div className="summary-body">
           <SpendingRates rates={rates} />
           <RecentTransactions openModal={openModal} />

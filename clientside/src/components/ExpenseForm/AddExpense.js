@@ -29,7 +29,6 @@ const AddExpense = ({ dispatch, selector, tab }) => {
   const submit = (event) => {
     event.preventDefault();
     const { expense, price, spendingBy, date, note } = selector;
-    console.log(date);
 
     if (!expense.name) seterror({ ...error, expense: true });
     else if (!price.price) seterror({ ...error, price: true });
