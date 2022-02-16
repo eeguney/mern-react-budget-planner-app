@@ -8,7 +8,6 @@ const Logout = () => {
   useEffect(() => {
     setTimeout(() => {
       localStorage.removeItem("token");
-      localStorage.removeItem("firstLogin", );
       window.location.reload();
     }, 1500);
   }, []);

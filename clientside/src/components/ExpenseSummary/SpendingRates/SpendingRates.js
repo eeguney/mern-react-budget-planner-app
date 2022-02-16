@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import { useSelector } from "react-redux";
-import currencyIcon from "../../../utils/currencyIcon";
 
 const SpendingRates = ({ rates }) => {
   const [selected, setSelected] = useState(null);
@@ -92,10 +91,10 @@ const SpendingRates = ({ rates }) => {
               <div className="colorBox" />
               <label>{item.title}</label>
               <div className="this-month">
-                <span>This month:</span> -{currencyIcon(localStorage.getItem("currency"))}{item.montly}
+                <span>This month:</span> -${item.montly}
               </div>
               <div className="daily-avg">
-                <span>This week:</span> -{currencyIcon(localStorage.getItem("currency"))}{item.weekly}
+                <span>This week:</span> -${item.weekly}
               </div>
             </div>
           ))}

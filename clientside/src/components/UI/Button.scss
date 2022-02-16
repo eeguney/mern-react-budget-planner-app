@@ -61,7 +61,7 @@
   height: 50px;
   border-radius: 10px;
   font-weight: 800;
-  background: #405ad5;
+  background: linear-gradient(to right, #405ad5,#22b5a9);
   font-size: 14px;
   color: #ffffff;
   transition: all 0.3s;
@@ -79,42 +79,4 @@
   border-radius: 5px;
   margin: auto;
   display: block;
-}
-
-
-.onOffButton {
-  width: 100px;
-  background: #2ee735;
-  height: 60px;
-  border: none;
-  border-radius: 999px;
-  overflow: hidden;
-  padding: 0 5px;
-  box-shadow: 0 5px 7px rgb(0 0 0 / 15%);
-  transition: all 0.2s linear;
-  &.on {
-    background: #ff5b93;
-  }
-  .inner {
-    display: flex;
-    width: 150px;
-    justify-content: space-between;
-    transform: translateX(0px);
-    &.on {
-      transform: translateX(-60px);
-    }
-    transition: all 0.2s linear;
-    ._inner_active {
-      width: 45px;
-      height: 45px;
-      background: #4caf50;
-      border-radius: 999px;
-    }
-    ._inner_inactive {
-      width: 45px;
-      height: 45px;
-      background: #e91e63;
-      border-radius: 999px;
-    }
-  }
 }

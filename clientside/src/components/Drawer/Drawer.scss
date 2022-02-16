@@ -16,108 +16,33 @@
   transition: all 0.2s;
   &.active {
     transform: translateY(0);
-    height: 400px;
+    height: 300px;
+    nav {
+      background-color: #fdecff;
+    }
   }
   @media screen and (min-width: $md) {
     flex-direction: row;
-    width: 400px;
+    width: 300px;
     height: 100%;
     border-radius: 0 25px 25px 0;
     top: 0;
-    transform: translateX(-300px);
+    transform: translateX(-200px);
     box-shadow: 0 5px 23px rgb(0 0 0 / 15%);
     &.active {
       transform: translateX(0);
       height: 100%;
       nav {
-        background: #ffffff;
-        border-left: 2px solid #efefef;
-        border-radius: 0;
+        background: #fdecff;
+        border-radius: 25px;
       }
     }
   }
   .hidden-settings {
-    flex: 1 1;
+    flex: 1;
     order: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0 20px;
     @media screen and (min-width: $md) {
       order: 0;
-    }
-    .setting-item {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      border-bottom: 2px solid #efefef;
-      padding: 25px 0;
-
-      &:last-child {
-        border-bottom: none;
-      }
-      label {
-        font-weight: 700;
-        margin-right: 15px;
-      }
-      .currency-select {
-        width: 150px;
-        position: relative;
-        cursor: pointer;
-        -webkit-user-select: none;
-        user-select: none;
-        .currency {
-          width: 100%;
-          height: 60px;
-          background: orange;
-          border-radius: 999px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-weight: 700;
-          color: #fff9ef;
-          box-shadow: 0 5px 7px rgb(0 0 0 / 15%);
-          &:hover {
-            background: rgb(235, 153, 0);
-          }
-        }
-        .currency_list {
-          width: 100%;
-          position: absolute;
-          top: 70px;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          transition: all 0.3s;
-          &.toggleDown {
-            animation: toggleDown 0.3s linear forwards;
-          }
-          &.toggleUp {
-            animation: toggleUp 0.3s linear forwards;
-          }
-          li {
-            width: 100%;
-            height: 45px;
-            margin-bottom: 10px;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            cursor: pointer;
-            -webkit-user-select: none;
-            user-select: none;
-            font-weight: 800;
-            border-radius: 10px;
-            color: #ffffff;
-            background: #08ff11;
-            box-shadow: 0 5px 7px rgb(0 0 0 / 15%);
-            &:hover {
-              background: #06dd0e;
-            }
-          }
-        }
-      }
     }
   }
   nav {
@@ -126,35 +51,14 @@
     width: 100%;
     flex-direction: row;
     align-items: center;
-    border-radius: 0 25px 25px 0;
+    border-radius: 25px 0 25px 0;
     height: 100px;
     background-color: #fff;
+    transition: all 0.4s linear;
     @media screen and (min-width: $md) {
       width: 100px;
       flex-direction: column;
       height: initial;
     }
-  }
-}
-
-@keyframes toggleDown {
-  from {
-    max-height: 0px;
-    opacity: 0;
-  }
-  to {
-    max-height: 300px;
-    opacity: 1;
-  }
-}
-
-@keyframes toggleUp {
-  from {
-    max-height: 300px;
-    opacity: 1;
-  }
-  to {
-    max-height: 0px;
-    opacity: 0;
   }
 }

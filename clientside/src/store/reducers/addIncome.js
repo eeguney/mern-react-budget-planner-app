@@ -5,7 +5,7 @@ const date = moment().format("l").split("/");
 
 const initialState = {
   source: "Not selected",
-  price: { currency: localStorage.getItem("currency"), price: null },
+  price: { currency: "Dolar", price: null },
   earningBy: "Not selected",
   date: {
     day: date[1],
@@ -48,7 +48,7 @@ const addIncomeReducer = (state = initialState, action) => {
       return {
         ...state,
         source: "Not selected",
-        price: { currency: localStorage.getItem("currency"), price: 0 },
+        price: { currency: "$ American Dolar", price: 0 },
         earningBy: "Not selected",
         date: {
           day: date[1],

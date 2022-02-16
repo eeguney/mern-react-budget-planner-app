@@ -29,9 +29,3 @@ export const ERROR = "ERROR"
 export const SUCCESSFUL = "SUCCESSFUL"
 export const WARNING = "WARNING"
 export const LOADING = "LOADING"
-
-// --> filter types
-export const PRICE = "PRICE"
-export const EXPENSE = "EXPENSE"
-export const FUND = "FUND"
-export const DATE = "DATE"
