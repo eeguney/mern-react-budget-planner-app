@@ -29,7 +29,6 @@ const AddIncome = ({ tab, dispatch, selector }) => {
   const submit = (event) => {
     event.preventDefault();
     const { source, price, earningBy, date, note } = selector;
-    console.log(date)
     if (!source) seterror({ ...error, source: true });
     else if (!price.price) seterror({ ...error, price: true });
     else if (!earningBy) seterror({ ...error, earningBy: true });
