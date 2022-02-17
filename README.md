@@ -11,6 +11,7 @@ Here is [DEMO](https://mern-react-budget-planner-app.netlify.app/)!
 - Montly and daily chart,
 - Membership system,
 - Live currency converter,
+- Dark theme (Coming soon),
 - Responsive design,
 - CSS Animations,
 - And much more...
@@ -28,6 +29,7 @@ Here is [DEMO](https://mern-react-budget-planner-app.netlify.app/)!
 - [JWT](https://jwt.io/)
 - [Sass](https://sass-lang.com/)
 - [React Minimal Pie Chart](https://github.com/toomuchdesign/react-minimal-pie-chart/)
+- [Free Currency API](https://freecurrencyapi.net/)
 
 ## Contributing;
 
