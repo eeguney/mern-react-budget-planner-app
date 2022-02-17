@@ -2,7 +2,7 @@
 
 A powerful, elegance and MERN Stack, budget planning app written in React.JS
 
-*** This project is still under development.
+# Here is [DEMO](https://mern-react-budget-planner-app.netlify.app/)!
 
 ## Specs;
 
