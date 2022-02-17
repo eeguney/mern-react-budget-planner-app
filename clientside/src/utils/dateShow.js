@@ -1,9 +1,7 @@
 const dateShow = (date) => {
   const editDate = date - 1;
-  if (editDate === 1) {
-    return date + " day ago";
-  }
-  if (editDate > 1) {
+
+  if (editDate > 0) {
     if (editDate <= 30) {
       return editDate + " days ago";
     }

@@ -5,7 +5,7 @@ const date = moment().format("l").split("/");
 
 const initialState = {
   expense: { category: "Uncategorized", name: "" },
-  price: { currency: "Dolar", price: 0 },
+  price: { currency: localStorage.getItem("currency"), price: 0 },
   spendingBy: "Not selected",
   date: {
     day: date[1],
@@ -50,7 +50,7 @@ const addExpenseReducer = (state = initialState, action) => {
       return {
         ...state,
         expense: { category: "Uncategorized", name: "" },
-        price: { currency: "$ American Dolar", price: 0 },
+        price: { currency: localStorage.getItem("currency"), price: 0 },
         spendingBy: "Not selected",
         date: {
           day: date[1],

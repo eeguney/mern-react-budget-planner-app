@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import dateShow from "../../../utils/dateShow";
+import currencyIcon from "../../../utils/currencyIcon";
 
 const RecentTransactions = ({ openModal }) => {
   const expenses = useSelector((state) => state.record.expenses);
@@ -20,7 +21,7 @@ const RecentTransactions = ({ openModal }) => {
   return (
     <div className="recent-transactions">
       <label><h3>Last 3 transactions</h3>
-      <Link to="/summary">SEE ALL</Link>
+      <Link to="/transactions">SEE ALL</Link>
       </label>
       <ul className="_list">
         {lists.slice(0, 3).map((item, index) => {
@@ -34,7 +35,7 @@ const RecentTransactions = ({ openModal }) => {
               <span className="item-spendingBy">{item.earningBy}</span>
               <span className="item-date">{dateShow(date)}</span>
               <span className="item-price">
-                <div>${item.price.price}</div>
+                <div>{currencyIcon(item.price.currency)}{item.price.price}</div>
               </span>
             </li>
           ) : (
@@ -44,7 +45,7 @@ const RecentTransactions = ({ openModal }) => {
               <span className="item-spendingBy">{item.spendingBy}</span>
               <span className="item-date">{dateShow(date)}</span>
               <span className="item-price">
-                <div>-${item.price.price}</div>
+                <div>-{currencyIcon(item.price.currency)}{item.price.price}</div>
               </span>
             </li>
           );

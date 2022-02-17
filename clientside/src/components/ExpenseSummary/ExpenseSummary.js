@@ -4,11 +4,10 @@ import "./ExpenseSummary.scss";
 import BudgetBoard from "./BudgetBoard/BudgetBoard";
 import SpendingRates from "./SpendingRates/SpendingRates";
 import RecentTransactions from "./RecentTransactions/RecentTransactions";
-import useCurrencyConverter from "../../utils/useCurrencyConverter";
 
 const ExpenseSummary = ({ openModal }) => {
   const selector = useSelector((state) => state);
-  const [result, convertCurrency] = useCurrencyConverter();
+
   const [sum, setSum] = useState({
     funds: 0,
     expenses: 0,
@@ -60,22 +59,72 @@ const ExpenseSummary = ({ openModal }) => {
       const postYear = postDate.getUTCFullYear();
       postDate = postMonth + "." + postDay + "." + postYear;
       if (new Date(lastMonthDate) <= new Date(postDate)) {
-        res[value.category].montly += value.price.price;
+        switch (value.price.currency) {
+          case "Dolar":
+            res[value.category].montly = res[value.category].montly + (value.price.price / selector.record.currency.USD);
+            break;
+          case "Euro":
+            res[value.category].montly = res[value.category].montly + (value.price.price / selector.record.currency.EUR);
+            break;
+          case "TL":
+            res[value.category].montly = res[value.category].montly + (value.price.price / selector.record.currency.TRY);
+
+            break;
+          default:
+            return 0;
+        }
       }
       if (new Date(lastweek) <= new Date(postDate)) {
-        res[value.category].weekly += value.price.price;
+        switch (value.price.currency) {
+          case "Dolar":
+            res[value.category].weekly = res[value.category].weekly + (value.price.price / selector.record.currency.USD);
+            break;
+          case "Euro":
+            res[value.category].weekly = res[value.category].weekly + (value.price.price / selector.record.currency.EUR);
+            break;
+          case "TL":
+            res[value.category].weekly = res[value.category].weekly + (value.price.price / selector.record.currency.TRY);
+            break;
+          default:
+            return 0;
+        }
       }
-      res[value.category].value += value.price.price;
-
+      switch (value.price.currency) {
+        case "Dolar":
+          res[value.category].value =+value.price.price / selector.record.currency.USD;
+          break;
+        case "Euro":
+          res[value.category].value =+value.price.price / selector.record.currency.EUR;
+          break;
+        case "TL":
+          res[value.category].value =+value.price.price / selector.record.currency.TRY;
+          break;
+        default:
+          return 0;
+      }
       // daily avg
       if (new Date(lastMonthDate) <= new Date(postDate)) {
-        const diffTime = Math.abs(new Date(lastMonthDate) - new Date(postDate));
+       
+        const diffTime = Math.abs(new Date(postDate) - new Date(lastMonthDate));
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         const a = (30 - diffDays) * 30;
-        const b = a * value.price.price;
-        res[value.category].dailyAvg = parseInt(
-          res[value.category].dailyAvg + b / 30
-        );
+        let b = 0;
+        switch (value.price.currency) {
+          case "Dolar":
+            b = (a * value.price.price) / selector.record.currency.USD;
+            break;
+          case "Euro":
+            b = (a * value.price.price) / selector.record.currency.EUR;
+            break;
+          case "TL":
+            b = (a * value.price.price) / selector.record.currency.TRY;
+            break;
+          default:
+            return 0;
+        }
+        res[value.category].dailyAvg = 
+          (res[value.category].dailyAvg + b)
+        
       }
       return res;
     }, {});
@@ -83,48 +132,59 @@ const ExpenseSummary = ({ openModal }) => {
     setRates(sumByCategories);
   }, [selector.record.expenses]);
 
-  var expensesByCurrency = [];
-  var fundsByCurrency = [];
   useEffect(() => {
-   
-    const categorizedSum = async () => {
-      
-
-      // categorized by currency
-
-      await selector.record.expenses.reduce(function (res, value) {
-        if (!res[value.price.currency]) {
-          res[value.price.currency] = {
-            currency: value.price.currency,
-            value: 0,
-          };
-          res[value.price.currency].value += value.price.price;
-          expensesByCurrency.push(res[value.price.currency]);
+    // calculation current money and debt
+    // sum all funds
+    let fundPrice = selector.record.funds
+      .map((item) => {
+        switch (item.price.currency) {
+          case "Dolar":
+            return item.price.price / selector.record.currency.USD;
+          case "Euro":
+            return item.price.price / selector.record.currency.EUR;
+          case "TL":
+            return item.price.price / selector.record.currency.TRY;
+          default:
+            return 0;
         }
-        return res;
-      }, {});
-
-      await selector.record.funds.reduce(function (res, value) {
-        if (!res[value.price.currency]) {
-          res[value.price.currency] = {
-            currency: value.price.currency,
-            value: 0,
-          };
-          res[value.price.currency].value += value.price.price;
-          fundsByCurrency.push(res[value.price.currency]);
+      })
+      .reduce((prev, curr) => prev + curr, 0);
+    // sum all expenses
+    let expensePrice = selector.record.expenses
+      .map((item) => {
+        switch (item.price.currency) {
+          case "Dolar":
+            return item.price.price / selector.record.currency.USD;
+          case "Euro":
+            return item.price.price / selector.record.currency.EUR;
+          case "TL":
+            return item.price.price / selector.record.currency.TRY;
+          default:
+            return 0;
         }
-        return res;
-      }, {});
+      })
+      .reduce((prev, curr) => prev + curr, 0);
 
-      // exchange
+    let debt = 0;
+    let currentMoney = parseInt(fundPrice) - parseInt(expensePrice);
 
-    
-      const allExpenses = expensesByCurrency.concat(fundsByCurrency);
-    };
+    setSum({
+      ...sum,
+      funds: fundPrice,
+      expenses: expensePrice,
+    });
 
-    categorizedSum();
-  }, [expensesByCurrency,fundsByCurrency]);
-console.log(sum)
+    if (currentMoney <= 0) {
+      debt = parseInt(currentMoney);
+      currentMoney = 0;
+    }
+
+    setSum({
+      ...sum,
+      currentMoney: currentMoney,
+      debt: debt,
+    });
+  }, [selector.record.funds, selector.record.expenses]);
   return (
     <section className="expenseSummary">
       <div className="summary-container">

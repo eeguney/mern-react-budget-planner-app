@@ -1,55 +1,71 @@
-import React, { useState, useEffect, Suspense } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import React, { useEffect, Suspense } from "react";
+import { useDispatch } from "react-redux";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { loadUser } from "./store/actions/user";
-import { loadData } from "./store/actions/record";
+import { loadCurrency, loadData } from "./store/actions/record";
 import Page from "./pages";
+import { currencyApi } from "./api";
 
 const App = () => {
-  const location = useLocation();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  const [displayLocation, setDisplayLocation] = useState(location);
-  const [transitionStage, setTransistionStage] = useState("fadeIn");
-
+  const localCurrency = localStorage.getItem("currency");
   useEffect(() => {
-    dispatch(loadUser()).then((user) => {
+    dispatch(loadUser()).then(() => {
       dispatch(loadData());
     });
+
+    switch (localCurrency) {
+      case "Dolar":
+        currencyApi("USD").then((currency) => {
+          const { TRY, USD, EUR } = currency.data.data;
+          dispatch(loadCurrency({ TRY, USD, EUR }));
+        });
+        break;
+      case "Euro":
+        currencyApi("EUR").then((currency) => {
+          const { TRY, USD, EUR } = currency.data.data;
+          dispatch(loadCurrency({ TRY, USD, EUR }));
+        });
+        break;
+      case "TL":
+        currencyApi("TRY").then((currency) => {
+          const { TRY, USD, EUR } = currency.data.data;
+          dispatch(loadCurrency({ TRY, USD, EUR }));
+        });
+        break;
+
+      default:
+        break;
+    }
   }, []);
 
-  useEffect(() => {
-    if (location !== displayLocation) setTransistionStage("fadeOut");
-  }, [location]);
+  const login = localStorage.getItem("firstLogin");
 
   return (
-    <div
-      className={`app ${transitionStage}`}
-      onAnimationEnd={() => {
-        if (transitionStage === "fadeOut") {
-          setTransistionStage("fadeIn");
-          setDisplayLocation(location);
-        }
-      }}
-    >
+    <div className={`app`}>
       <Suspense fallback={<div>Loading...</div>}>
-        <Routes location={displayLocation}>
+        <Routes>
           <Route path="/" exact element={<Page.Home />} />
           <Route
             path="/signin"
             exact
-            element={user.fullname ? <Navigate to="/" /> : <Page.SignIn />}
+            element={login ? <Navigate to="/" /> : <Page.SignIn />}
           />
           <Route
             path="/signup"
             exact
-            element={user.fullname ? <Navigate to="/" /> : <Page.SignUp />}
+            element={login ? <Navigate to="/" /> : <Page.SignUp />}
           />
           <Route
-          path="/logout"
-          exact
-          element={user.fullname ? <Page.Logout /> : <Navigate to="/" />}
-        />
+            path="/transactions"
+            exact
+            element={login ? <Page.Home /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/logout"
+            exact
+            element={login ? <Page.Logout /> : <Navigate to="/" />}
+          />
         </Routes>
       </Suspense>
     </div>

@@ -1,48 +1,22 @@
-import { useEffect, useState } from "react";
-import { currencyApi } from "../api";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
 const useCurrencyConverter = () => {
-  const currentCurrency = localStorage.getItem("currency");
-  const [fetch, setFetch] = useState([]);
+  const liveCurrency = useSelector((state) => state.record.currency);
   const [result, convert] = useState("");
 
-  useEffect(() => {
-    const fetchAllCurrency = () => {
-      switch (currentCurrency) {
-        case "Dolar":
-          currencyApi("USD").then((item) => {
-            setFetch(item.data.data);
-          });
-          break;
-        case "Euro":
-          currencyApi("EUR").then((item) => {
-            setFetch(item.data.data);
-          });
-          break;
-        case "TL":
-          currencyApi("TRY").then((item) => {
-            setFetch(item.data.data);
-          });
-          break;
-
-        default:
-          break;
-      }
-    };
-    fetchAllCurrency();
-  }, []);
-
-  const convertCurrency = async (currency, price) => {
+  const convertCurrency = async (price, currency) => {
     switch (currency) {
       case "Dolar":
-        convert(price / fetch.USD);
-        return price / fetch.USD;
+        convert(price / liveCurrency.USD);
+        return price / liveCurrency.USD;
 
       case "Euro":
-        convert(price / fetch.EUR);
-        return price / fetch.EUR;
+        convert(price / liveCurrency.EUR);
+        return price / liveCurrency.EUR;
       case "TL":
-        convert(price / fetch.TRY);
-        return price / fetch.TRY;
+        convert(price / liveCurrency.TRY);
+        return price / liveCurrency.TRY;
 
       default:
         break;

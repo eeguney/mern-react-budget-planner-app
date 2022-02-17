@@ -49,6 +49,9 @@
   position: fixed;
   width: 650px;
   height: fit-content;
+  @media screen and (max-width: $lg) {
+    width: calc(100% - 40px);
+  }
   background: white;
   top: 0;
   left: 0;

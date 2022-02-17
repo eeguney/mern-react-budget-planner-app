@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { deleteExpense, deleteFund } from "../../../../store/actions/record";
+import currencyIcon from "../../../../utils/currencyIcon";
 import dateShow from "../../../../utils/dateShow";
 import Button from '../../Buttons';
 import Icon from "../../Icons";
@@ -42,7 +43,7 @@ const TransactionModalComponent = ({ record, modal, setModal }) => {
               );
               return (
                 <div className="transaction-item">
-                  <label>Fund Item</label>
+                  <label>Fund Item <button type="button" onClick={() => setModal({ status: false })}><Icon.Back size="18" /></button></label>
                   <div className="_top">
                     <div className="category">
                       Category: <span>{item.source}</span>
@@ -58,7 +59,7 @@ const TransactionModalComponent = ({ record, modal, setModal }) => {
                     Note: <span>{item.note ? item.note : "No note"}</span>
                   </div>
                   <div className="price">
-                    Price: <span>${item.price.price}</span>
+                    Price: <span>{currencyIcon(item.price.currency)}{item.price.price}</span>
                   </div>
                   <Button.Submit style={{ marginTop: "15px" }} onClick={() => deletefund(item._id)}>
                     { loading ? <Icon.Spinner size="15" /> : "REMOVE" }
@@ -68,14 +69,14 @@ const TransactionModalComponent = ({ record, modal, setModal }) => {
             })
         : record.expenses
             .filter((filter) => filter._id === modal.id)
-            .map((item) => {
+            .map((item, index) => {
               const date = Math.ceil(
                 Math.abs(new Date(item.date) - new Date()) /
                   (1000 * 60 * 60 * 24)
               );
               return (
-                <div className="transaction-item">
-                  <label>Expense Item</label>
+                <div className="transaction-item" key={index}>
+                  <label>Expense Item <button type="button" onClick={() => setModal({ status: false })}><Icon.Back size="18" /></button></label>
                   <div className="_top">
                     <div className="category">
                       Category: <span>{item.category}</span>
@@ -96,7 +97,7 @@ const TransactionModalComponent = ({ record, modal, setModal }) => {
                     </div>
                   )}
                   <div className="price">
-                    Price: <span>${item.price.price}</span>
+                    Price: <span>{currencyIcon(item.price.currency)}{item.price.price}</span>
                   </div>
                   <Button.Submit style={{ marginTop: "15px" }} onClick={() => deleteexpense(item._id)}>
                   { loading ? <Icon.Spinner size="15" /> : "REMOVE" }

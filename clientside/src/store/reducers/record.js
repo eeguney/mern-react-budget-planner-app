@@ -8,6 +8,7 @@ const initialState = {
   categories: [],
   sources: [],
   changes: { expense: 0, fund: 0 },
+  currency: []
 };
 
 const recordReducer = (state = initialState, action) => {
@@ -22,6 +23,12 @@ const recordReducer = (state = initialState, action) => {
         categories: action.data.categories,
         sources: action.data.sources,
       };
+      case actionType.CURRENCY_LOAD:
+      return {
+        ...state,
+        currency: action.data,
+      };
+      
     case actionType.NEW_PERSON:
       return {
         ...state,

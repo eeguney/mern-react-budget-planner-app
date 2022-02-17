@@ -15,6 +15,13 @@ const loadData = () => async (dispatch, getState) => {
   }
 };
 
+const loadCurrency = (data) => async (dispatch) => {
+  dispatch({
+    type: actionType.CURRENCY_LOAD,
+    data,
+  });
+};
+
 const addExpense = (newExpense) => async (dispatch, getState) => {
   const token = getState().user.token;
   const { id } = jwtDecode(token);
@@ -138,6 +145,7 @@ const addSource = (newSource) => async (dispatch, getState) => {
 
 export {
   loadData,
+  loadCurrency,
   addPerson,
   addCategory,
   addSource,

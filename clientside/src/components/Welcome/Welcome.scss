@@ -1,14 +1,26 @@
+@import "../../default.scss";
+
 .welcome {
   display: flex;
   margin: 25px 45px 10px 145px;
   justify-content: space-between;
+  @media screen and (max-width: $md) {
+    margin: 15px;
+    margin-bottom: 0;
+  }
   div {
     padding: 10px 0;
     border-radius: 5px;
     font-size: 14px;
+    @media screen and (max-width: $md) {
+      display: none;
+    }
     &.logout {
       background: #2c2c2c !important;
       padding: 10px 15px;
+      @media screen and (max-width: $md) {
+        display: block;
+      }
       a {
         color: #ffffff;
         text-decoration: blink;

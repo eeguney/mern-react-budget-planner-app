@@ -132,7 +132,7 @@
           margin: 0px 20px;
           li {
             display: grid;
-            grid-template-columns: 100px auto 100px 140px 100px;
+            grid-template-columns: 100px auto 100px 140px 170px;
             color: #181818;
             background: white;
             padding: 7px 5px;
@@ -141,6 +141,11 @@
             border-bottom: 2px solid #f3f3f3;
             font-weight: 600;
             cursor: pointer;
+            @media screen and (max-width: $md) {
+              .item-spendingBy {
+                display: none;
+              }
+            }
             &:last-child {
               border: none;
             }
@@ -148,7 +153,7 @@
               background-color: #f8f8f8;
             }
             @media screen and (max-width: $md) {
-              grid-template-columns: auto 100px 100px;
+              grid-template-columns: auto 150px;
             }
             &.expense--li {
               .item-price div {
