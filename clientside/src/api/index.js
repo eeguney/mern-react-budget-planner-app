@@ -30,5 +30,5 @@ export const fetchData = (id) => APIwHeader.get("/data/" + id, id);
 
 export const currencyApi = (CURRENCY) =>
   axios.get(
-    "https://freecurrencyapi.net/api/v2/latest?apikey=315ec9a0-8f21-11ec-af69-bdef3d18c0ec&base_currency="+CURRENCY
+    "https://freecurrencyapi.net/api/v2/latest?apikey=YOUR_KEY&base_currency="+CURRENCY
   );
