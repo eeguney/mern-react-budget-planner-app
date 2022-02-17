@@ -2,7 +2,7 @@
 
 A powerful, elegance and MERN Stack, budget planning app written in React.JS
 
-# Here is [DEMO](https://mern-react-budget-planner-app.netlify.app/)!
+## Here is [DEMO](https://mern-react-budget-planner-app.netlify.app/)!
 
 ## Specs;
 
@@ -13,11 +13,6 @@ A powerful, elegance and MERN Stack, budget planning app written in React.JS
 - Responsive design,
 - CSS Animations,
 - And much more...
-
-## Contributing;
-
-- If you have problems please leave an issue from [here](https://github.com/eeguney/mern-react-budget-planner-app/issues/)
-- Consider forking the project and submitting new pull requests. I am much likely control [my github account](https://github.com/eeguney/)
 
 ## Built with;
 
@@ -32,6 +27,11 @@ A powerful, elegance and MERN Stack, budget planning app written in React.JS
 - [JWT](https://jwt.io/)
 - [Sass](https://sass-lang.com/)
 - [React Minimal Pie Chart](https://github.com/toomuchdesign/react-minimal-pie-chart/)
+
+## Contributing;
+
+- If you have problems please leave an issue from [here](https://github.com/eeguney/mern-react-budget-planner-app/issues/)
+- Consider forking the project and submitting new pull requests. I am much likely control [my github account](https://github.com/eeguney/)
 
 ## License
 
