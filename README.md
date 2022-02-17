@@ -40,4 +40,4 @@ Here is [DEMO](https://mern-react-budget-planner-app.netlify.app/)!
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-*** Was designed and coded with love by Emre Güney
+##...with love by Emre Güney
