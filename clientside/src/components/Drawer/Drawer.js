@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { currency } from "../../utils/lists";
 import Button from "../UI/Buttons";
@@ -6,6 +7,7 @@ import Icon from "../UI/Icons";
 import "./Drawer.scss";
 
 const Drawer = () => {
+  const user = useSelector((state) => state.user)
   const [toggle, settoggle] = useState(false);
   const [currencyToggle, setCurrencyToggle] = useState(false);
   const [maincurrency, setMainCurrency] = useState();
@@ -70,6 +72,23 @@ const Drawer = () => {
           label="Settings"
           icon={<Icon.Settings size="22" />}
         />
+        {
+          user.fullname === null ?
+          <Link to="/signin">
+          <Button.DrawerNavButton
+            label="Sign In"
+            icon={<Icon.User size="22" />}
+          />
+        </Link>
+        :
+        <Link to="/logout">
+          <Button.DrawerNavButton
+            label="Log out"
+            icon={<Icon.Logout size="22" />}
+          />
+        </Link>
+        }
+        
       </nav>
     </aside>
   );
